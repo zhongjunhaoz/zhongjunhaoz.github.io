@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Webpack入门(1) - 图解Webpack是什么, 你喜欢吃青椒么">
-    <meta name="description" content="前言毫无疑问，Webpack在前端中有着独特的重要性，是你必须要熟悉的一个技能点。因为你在投简历浏览一些大公司的前端岗位时，Webpack毫无疑问是写明了至少要是熟悉Webpack。我在学Webpack期间，常常被它的配置，环境给绕晕了,现">
+    <meta name="keywords" content="Webpack入门(3) - 核心内容, 你喜欢吃青椒么">
+    <meta name="description" content="webpack入门(2)-安装，配置，环境，上节传送门。
+Entry(入口)简单提一下，Entry是webpack的入口文件，一开始运行webpack它会找到webpack.config.js里的Entry。它会从这开始着手，构建内部依赖图">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Webpack入门(1) - 图解Webpack是什么 | 你喜欢吃青椒么</title>
+    <title>Webpack入门(3) - 核心内容 | 你喜欢吃青椒么</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,13 +261,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Webpack入门(1) - 图解Webpack是什么
+                        Webpack入门(3) - 核心内容
                     </div>
                 </div>
             </div>
@@ -409,14 +410,14 @@
                     
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        944
+                        2.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        11 分
                     </div>
                     
                 
@@ -432,21 +433,162 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>毫无疑问，Webpack在前端中有着独特的重要性，是你必须要熟悉的一个技能点。因为你在投简历浏览一些大公司的<strong>前端岗位</strong>时，Webpack毫无疑问是写明了至少要是<strong>熟悉Webpack</strong>。我在学Webpack期间，常常被它的配置，环境给绕晕了,现在重新开始学一遍，希望我可以掌握它。本着分享学习的态度，记录下我学习的过程，希望可以对一些初学Webpack的同学提供一点帮助。</p>
-<h1 id="Webpack使用原因和定义"><a href="#Webpack使用原因和定义" class="headerlink" title="Webpack使用原因和定义"></a>Webpack使用原因和定义</h1><p>我相信很多刚开始学<code>Webpack</code>的同学在学之前一定疯狂的在各大论坛或者百度搜索“什么是<code>Webpack</code>”，因为我就是这么干的。但是一些大牛的文章在提及什么是<code>Webpack</code>的时候总是一笔带过，看完之后也是云里雾里，迷迷糊糊。现在我用自己的语言来解释什么是<code>Webpack</code>。在此之前，还要向大家解释为什么要使用<code>Webpack</code>:</p>
-<h2 id="为什么要使用Webpack"><a href="#为什么要使用Webpack" class="headerlink" title="为什么要使用Webpack"></a>为什么要使用Webpack</h2><p>我们都知道一个大公司的网站往往做的都很炫酷，美观，功能很齐全。在这背后前端工程师花了很大的精力去做优化什么的。大型网站和大型项目中的背后都拥有着复杂的JS代码和很多依赖。<strong>为了简化开发的复杂度，往往对程序切割分裂为不同的模块。</strong><br><img src="https://user-gold-cdn.xitu.io/2019/6/30/16ba776df3057afd?w=390&h=486&f=png&s=22381" alt=""><br>如图所示，把大型项目切割成很多不同的模块。那么，里面的箭头是怎么回事，我觉得可以理解为<code>require</code>。因为两个文件之间相互通联是靠<code>require</code>连接的。好比如，<code>html</code>文件利用<code>link</code>中引入样式一样。<code>webpack</code>整合了项目里的模块打包的更为精简。所以我们需要<code>webpack</code>。</p>
-<ul>
-<li>Webpack分析大型项目的结构</li>
-<li>找到JS模块以及浏览器不能直接运行的模块(cjs,Sass,hbs等等)</li>
-<li>将浏览器不能直接处理的文件转换和打包为合适的格式供浏览器直接处理。</li>
-<li>这样前端工程师既可以更轻松系统的开发，浏览器也能更高效流畅的运行。</li>
+                <p><a href="https://juejin.im/post/5d19a847518825793f6fcd9f" target="_blank" rel="noopener">webpack入门(2)-安装，配置，环境</a>，上节传送门。</p>
+<h1 id="Entry-入口"><a href="#Entry-入口" class="headerlink" title="Entry(入口)"></a>Entry(入口)</h1><p>简单提一下，Entry是webpack的入口文件，一开始运行webpack它会找到<code>webpack.config.js</code>里的<code>Entry</code>。它会从这开始着手，构建内部依赖图。入口点可以有一个或多个。</p>
+<h2 id="entry的类型"><a href="#entry的类型" class="headerlink" title="entry的类型"></a>entry的类型</h2><ul>
+<li>string类型<pre><code>一个入口
+entry:&#39;./src/main.js&#39;</code></pre></li>
+<li>array类型<pre><code>配置了多个入口
+entry: [&#39;./src/main1.js&#39;, &#39;./src/main2.js&#39;]</code></pre></li>
+<li>object类型<pre><code>对象类型
+entry: {
+  a: &#39;./src/main.js&#39;,
+  b: [&#39;./src/main1.js&#39;, &#39;./src/main2.js&#39;]
+}</code></pre></li>
+<li>多个入口时，每个入口生成都会生成Chuck。</li>
+<li>如果是array类型，则搭配output.library配置项使用时，只有数组里的最后一个入口文件会被导出。</li>
 </ul>
-<h2 id="什么是Webpack"><a href="#什么是Webpack" class="headerlink" title="什么是Webpack"></a>什么是Webpack</h2><p><img src="https://user-gold-cdn.xitu.io/2019/6/30/16ba78866fc440b7?w=1284&h=566&f=png&s=65325" alt=""><br>上面已经提到了<code>Webpack</code>的工作流程，我在举一个<strong>不怎么严谨</strong>的例子你们也许就能明白。<br><code>假如你去饭店吃饭，点完菜后你觉得把菜打包回寝室吃更爽一些。你点了很多菜，这些菜有麻辣的，酸辣的，甜的，还有水果，小糕点不同的口味。考虑到你的室友有的喜欢吃辣的，有的喜欢吃甜的，有的喜欢吃水果。如果全部的菜混在一起可能室友都不喜欢，你决定不混在一起，而是按照口味混在一起。把辣的菜混到一起，把甜的菜混到一起，把水果混到一起。这样你的室友就能够接受了。</code></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/7/1/16bab1b71034272a?w=1097&h=606&f=png&s=70391" alt=""></p>
-<p><code>结合上面webpack的工作流程，可以这样说：webpack分析大型项目的结构即分析这些菜是哪些口味；找到浏览器不能直接运行的模块，即分析哪些是你室友不能接受的口味；将浏览器不能直接处理的文件转换和打包为合适的格式供浏览器处理即将菜分类打包让你的室友可以接受。</code><br>结合上面的图，应该把<code>Webpack</code>的运行流程搞清楚了。</p>
-<h1 id="webpack工作流程"><a href="#webpack工作流程" class="headerlink" title="webpack工作流程"></a>webpack工作流程</h1><p>用文字叙述不直观，我尽量用图形的方式来说明。首先先说明依赖就是本文第一张图里面的箭头。<br><img src="https://user-gold-cdn.xitu.io/2019/7/1/16bab14c0a750e74?w=570&h=796&f=png&s=82861" alt=""></p>
-<p>未完待续…</p>
+<h2 id="配置动态Entry"><a href="#配置动态Entry" class="headerlink" title="配置动态Entry"></a>配置动态Entry</h2><p>假如项目里有多个页面需要为每个页面的入口配置一个entry，但这些页面数量可能会不断增长，这时entry的配置会受到其他因素的影响导致不能写成静态的值。解决办法就是把entry设置成一个函数去动态返回上面所说的配置：</p>
+<pre><code>//同步函数
+entry: () =&gt; {
+    return {
+        a: &#39;./pages/a&#39;,
+        b: &#39;./pages/b&#39;
+    }
+}
 
+//异步函数
+entry: () =&gt; {
+    return new Promise((resolve) =&gt; {
+        resolve({
+            a: &#39;./pages/a&#39;,
+            b: &#39;./pages/b&#39;
+        })
+    })
+}</code></pre><h1 id="output"><a href="#output" class="headerlink" title="output"></a>output</h1><p>Output属性告诉webpack在哪里输出它所创建的bundles，也可指定bundles的名称，默认位置为./dist。整个应用结构都会被编译到指定的输出文件夹中去，你可以通过在配置中指定一个 output 字段，来配置这些处理过程。最基本的属性包括filename（文件名）和path（输出路径）。</p>
+<h2 id="Chuck的名称"><a href="#Chuck的名称" class="headerlink" title="Chuck的名称"></a>Chuck的名称</h2><p>向上面的<code>main.js</code>中，<code>main</code>就是Chuck名称。<strong>Chunk的名称和Entry的配置有关。</strong></p>
+<ul>
+<li>如果entry是<code>string</code>类型或者是<code>array</code>类型，只会生成一个Chuck。</li>
+<li>如果entry是一个<code>object</code>,就可能出现多个<code>chunk</code>,这时候的<code>chunk</code>值是<code>object</code>名称。比如上面的<code>a.js</code>,<code>b.js</code>。Chuck名称在<code>output</code>可以配置。<h2 id="多个入口时怎么配置filename"><a href="#多个入口时怎么配置filename" class="headerlink" title="多个入口时怎么配置filename"></a>多个入口时怎么配置filename</h2>当通过多个入口起点(entry point)、代码拆分(code splitting)或各种插件(plugin)创建多个 bundle的时候，可以有以下几种赋bundle名称的方式。</li>
+<li>使用入口名称赋值,[name]为entry的key值,比如<code>a.bundle.js</code>,<code>b.bundle.js</code><pre><code>filename: &quot;[name].bundle.js&quot;</code></pre></li>
+<li>使用内部 chunk id,从0开始<pre><code>filename: &quot;[id].bundle.js&quot;</code></pre></li>
+<li>使用每次构建过程中，都会生成一段Hash值<pre><code>filename: &quot;[name].[hash].bundle.js&quot;</code></pre></li>
+<li>使用基于每个 chunk 内容的 hash值，可以理解为版本号(Git里面的)或者md5值。<strong>文件内容发生改变，chunkhash就会改变。在这里可以用到：项目上线，只上线那些被改过的文件</strong><pre><code>filename: &quot;[chunkhash].bundle.js&quot;</code></pre><pre><code>取5位Hash值，默认为20位。
+filename: &quot;[chunkhash:5].bundle.js&quot;</code></pre><h2 id="path"><a href="#path" class="headerlink" title="path"></a>path</h2>output.path 配置输出文件存放在本地的目录，必须是 <code>string</code> 类型的<strong>绝对路径</strong>。通常通过 Node.js 的 path 模块去获取绝对路径：<pre><code>path: path.resolve(__dirname, &#39;dist_[hash]&#39;)</code></pre><code>__dirname</code>就是当前文件所在的文件夹的名字。<h2 id="publicPath"><a href="#publicPath" class="headerlink" title="publicPath"></a>publicPath</h2>对构建出的资源进行异步加载（图片，文件）。加载这些异步资源需要对应的 URL 地址。默认值是空字符串“ ”。<strong>简单说，就是静态文件托管在cdn上。</strong><br>如果你这么配置：<pre><code>output:{
+  filename:&#39;[name]_[chunkhash:8].js&#39;,
+  publicPath:&#39;https://www.qdtalk.com/assets/&#39;
+}</code></pre>打包编译之后，HTML页面就变成了这个：<pre><code>&lt;script src=&quot;https://www.qdtalk.com/assets/a_12345678.js&quot;&gt;&lt;/script&gt;</code></pre>上面只是举了output的几个常用参数。</li>
+</ul>
+<h1 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h1><p><code>Loader</code>在webpack中承担<strong>翻译</strong>的工作。<br>因为<code>webpack</code>自身只支持加载<code>js</code>和<code>json</code>文件，把源文件转化翻译后输出新结果，且一个文件还可以链式的经过<strong>多个翻译员翻译</strong>。</p>
+<p>以处理SCSS文件为例：</p>
+<ul>
+<li><code>SCSS</code> 源代码会先交给 <code>sass-loader</code> 把 <code>SCSS</code> 转换成 <code>CSS</code>；</li>
+<li>把 <code>sass-loader</code> 输出的 <code>CSS</code> 交给 <code>css-loader</code> 处理，找出 <code>CSS</code> 中依赖的资源、压缩 <code>CSS</code> 等；</li>
+<li>把 <code>css-loader</code> 输出的 <code>CSS</code> 交给 <code>style-loader</code> 处理，转换成通过脚本加载的 JavaScript 代码。<h2 id="常用的Loader"><a href="#常用的Loader" class="headerlink" title="常用的Loader"></a>常用的Loader</h2></li>
+<li>样式：<code>style-loader、css-loader、less-loader、sass-loader</code>等。</li>
+<li>文件：<code>raw-loader、file-loader 、url-loader</code>等</li>
+<li>编译：<code>babel-loader、coffee-loader 、ts-loader</code>等</li>
+<li>校验测试：<code>mocha-loader、jshint-loader 、eslint-loader</code>等</li>
+<li><code>vue-loader、coffee-loader、babel-loader</code>等可以将特定文件格式转成js模块、将其他语言转化为js语言和编译下一代js语言</li>
+<li><code>file-loader、url-loader</code>等可以处理资源，<code>file-loader</code>可以复制和放置资源位置，并可以指定文件名模板，用hash命名更好利用缓存。</li>
+<li><code>url-loader</code>可以将小于配置limit大小的文件转换成内敛Data Url的方式，减少请求。</li>
+<li><code>raw-loader</code>可以将文件已字符串的形式返回</li>
+<li><code>imports-loader、exports-loader</code>等可以向模块注入变量或者提供导出模块功能</li>
+<li><code>expose-loader</code>:暴露对象为全局变量<h2 id="安装Loader"><a href="#安装Loader" class="headerlink" title="安装Loader"></a>安装Loader</h2>以安装css-loader和style.loader为例，直接在终端：<pre><code>npm install css-loader style-loader --save-dev</code></pre><h2 id="配置单个Loader"><a href="#配置单个Loader" class="headerlink" title="配置单个Loader"></a>配置单个Loader</h2><code>webpack.config.js</code>中<pre><code>module.exports = {
+  module: {
+      rules: [
+          {
+              test: /\.css$/,
+              use: &#39;css-loader&#39;
+          }
+      ]
+  }
+}</code></pre></li>
+<li>test:后面接一个正则表达式，表示有那些后缀文件被处理。</li>
+<li>use：表示应该用什么loader。</li>
+</ul>
+<h2 id="配置多个loader"><a href="#配置多个loader" class="headerlink" title="配置多个loader"></a>配置多个loader</h2><pre><code>module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: &#39;style-loader&#39;
+                    },
+                    {
+                        loader: &#39;css-loader&#39;
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre><h2 id="其他配置方法"><a href="#其他配置方法" class="headerlink" title="其他配置方法"></a>其他配置方法</h2><ul>
+<li>直接在命令行<pre><code>webpack --module-bind &#39;txt=raw-loader&#39;</code></pre></li>
+<li>内联<pre><code>import txt from &#39;raw-loader!./file.txt&#39;</code></pre>但这两种方法都不推荐。还是在<code>webpack.config.js</code>配参数更好。</li>
+</ul>
+<h2 id="几个重要的loader"><a href="#几个重要的loader" class="headerlink" title="几个重要的loader"></a>几个重要的loader</h2><h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><p><code>Babel</code> 可以让你使用<code>ES2015/16/17</code> 写代码而不用顾忌浏览器的问题，<code>Babel</code> 可以帮你转换代码。</p>
+<ul>
+<li>安装几个必要的<code>Babel</code>库,<pre><code>npm i --save-dev babel-loader babel-core babel-preset-env</code></pre>   babel-loader让webpack去处理一些使用了es6的js文件。<br>   babel-core 提供一系列API，其实是让babel-loader去调用babel-core的API。<br>   babel-preset-env 这个库可以根据环境的不同转换代码</li>
+<li>配置babel规则。在<code>package.json</code>里面增加一个<code>babel属性</code>。作用是设置项目中的babel转码规则和使用到的babel插件，格式如下：<pre><code>&quot;babel&quot;:{
+&quot;presets&quot;: [&quot;evn&quot;],//设定转码规则
+&quot;plugins&quot;: []//要用到的插件
+}</code></pre>表示告诉npm，在本项目中将使用babel，并且使用<code>babel-preset-env</code>规则进行转码。</li>
+<li>除了上一种写法外，还有另外一种方法(<strong>推荐写法</strong>)。在根目录下面新建<code>.babelrc</code>文件，然后做一下配置：<pre><code>{
+&quot;presets&quot;: [&quot;babel-preset-env&quot;]
+}
+</code></pre></li>
+</ul>
+<pre><code>- 上面已经配置好`babel`的规则，但是`webpack`依然不知道何时使用该规则。我们还要再接着在配置里写入</code></pre><p>use: ‘babel-loader’</p>
+<pre><code>**但要注意的是**，只有`js`文件才可以使用`babel`。
+
+### 处理图片
+- `npm i --save-dev url-loader file-loader`
+- 在`webpack.config.js`里面修改配置：</code></pre><p>test: /.(png|jpe?g|gif|svg)(?.*)?$/,<br>use : [<br>  {<br>     loader: ‘url-loader’,<br>     options: {<br>      // 限制 图片大小 10000B，小于限制会将图片转换为 base64格式<br>         limit: 10000,<br>      // 超出限制，创建的文件格式<br>      // build/images/[图片名].[hash].[图片格式]<br>         name: ‘images/[name].[hash].[ext]’<br>    }<br>  }<br>]</p>
+<pre><code>
+# Plugins(插件)
+插件用来拓展webpack功能，可以用于执行范围更广的任务，包括**打包、优化、压缩、搭建服务器**等等，功能十分强大。**要是用一个插件，一般是先使用npm包管理器进行安装，然后在配置文件webpack.config.js中require引入，最后在这个文件下使用new来创建一个实例。**   Loader一次只能处理单个相同类型的文件，但是plugins可以对整个过程起作用。
+## 常用的plugin插件
+- webpack内置`UglifyJsPlugin`插件，压缩和混淆代码。
+- webpack内置`CommonsChunkPlugin`，提高打包效率，将第三方库和业务代码分开打包
+- `ProvidePlugin`：自动加载模块，代替`require`和`import`
+- `html-webpack-plugin`可以根据模板自动生成html代码，并自动引用css和js文件
+- `extract-text-webpack-plugin` 将js文件中引用的样式单独抽离成css文件
+- `DefinePlugin` 编译时配置全局变量，这对开发模式和发布模式的构建允许不同的行为非常有用。
+- `HotModuleReplacementPlugin `热更新
+- `optimize-css-assets-webpack-plugin` 不同组件中重复的css可以快速去重
+- `webpack-bundle-analyzer` 一个webpack的bundle文件分析工具，将bundle文件以可交互缩放的treemap的形式展示
+- `compression-webpack-plugin` 生产环境可采用gzip压缩JS和CSS
+- `happypack`：通过多进程模型，来加速代码构建
+## 一个简单的插件使用
+- `npm install --save-dev html-webpack-plugin`安装一个插件。有的插件webpack自带，如果没有，则需用npm安装。
+- `const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);`在webpack.config.js中引入。
+- new一个实例</code></pre><p>plugins: [</p>
+<p>  new HtmlWebpackPlugin({<br>  template: ‘./src/index.html’, //以src目录下的index.html文件为模板生成html5新文件<br>  filename: ‘index.html’,//指定生成的HTML文件叫啥名<br>  inject: ‘head’,//指定把脚本script标签放在那里，这里放在<head>标签里。还可以放<body><br>  })<br>]</p>
+<pre><code>## 利用html-webpack-plugin插件自动生成html文件
+### 为什么要自动生成HTML
+每次执行webpack打包生成js文件后，都必须在index.html中手动插入打包好的文件的路径。**但在真实生产环境中，一次运行webpack后，完整的index.html应该是被自动生成的。** 例如静态资源、js 脚本都被自动插入了。
+### 根目录下的index.html文件
+根目录下的index.html会被html-webpack-plugin作为最终生成的 html 文件的模板。打包后，相关引用关系和文件路径都会按照正确的配置被添加进去。
+### 配置</code></pre><p>const HtmlWebpackPlugin = require(“html-webpack-plugin”);</p>
+<p>module.exports = {<br> entry: {<br>    app: “./src/app.js”<br>  },<br>  output: {<br>    publicPath: <strong>dirname + “/dist/“,<br>    path: path.resolve(</strong>dirname, “dist”),<br>  },<br>    plugins: [<br>    new HtmlWebpackPlugin({<br>      filename: “index.html”,<br>      template: “./index.html”,<br>      chunks: [“app”], // entry中的app入口才会被打包<br>      minify: {<br>        // 压缩选项<br>        collapseWhitespace: true<br>      }<br>    })<br>  ]<br>}</p>
+<pre><code>最后执行打包命令，然后在dist目录下就给你自动生成了index.html文件。dist目录下的index.html文件是以根目录下的inde.html文件为模板的。
+
+# 其他几个核心概念
+## Module(模块)
+对于webpack，模块不仅仅是javascript模块，它包括了任何类型的源文件，不管是图片、字体、json文件都是一个个模块。**Webpack支持以下的方式引用模块：**
+- ES2015 import 方法
+- CommonJs require() 方法
+- AMD define 和 require 语法
+- css/sass/less文件中的 @import 语法
+- url(...)和 &lt;img src=&quot;&quot;&gt;的图片路径
+## Dependency Graph（依赖关系图）
+所谓的依赖关系图是webpack根据每个模块之间的依赖关系递归生成的一张内部逻辑图，有了这张依赖关系图，webpack就能按图索骥把所有需要模块打包成一个bundle文件了。
+## Mode(模式)
+分为开发模式`development`和生产模式`production` 。两种模式的区别在于一个是为生产环境编译打包，一个是为了开发环境编译打包。生产环境模式下，webpack会自动对代码进行压缩等优化，省去了配置的麻烦。
+
+## 结语
+webpack断断续续终于算是入门了。与其他技能点相比，webpack算是比较酸涩难懂。但是学无止境，我学webpack的还有很长的路要走。</code></pre>
             </div>
             <hr/>
 
@@ -631,19 +773,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/20/webpack-ru-men-2-an-zhuang-pei-zhi-huan-jing-da-jian/">
+                <a href="/2019/10/20/yi-wen-gao-dong-css-zhong-de-zi-ti-dan-wei-da-xiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Webpack入门(2) - 安装，配置，环境搭建">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="一文搞懂CSS中的字体单位大小">
                         
-                        <span class="card-title">Webpack入门(2) - 安装，配置，环境搭建</span>
+                        <span class="card-title">一文搞懂CSS中的字体单位大小</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前端打包工具
+                            在学习的过程中,发现CSS有很多可以描述单位的尺寸。比如`px`,`em`,`rem`,`vw`等等。平时也没有深究，一来是没时间，二来是在我学习清单中优先级过低。一直想彻底弄明白，一直耽搁到现在。现在花上一点时间来整理一下，彻底弄懂它。
                         
                     </div>
                     <div class="publish-info">
@@ -665,8 +807,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
@@ -680,19 +822,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/20/cheng-xu-yuan-du-yao-zhang-wo-de-git/">
+                <a href="/2019/10/20/webpack-ru-men-2-an-zhuang-pei-zhi-huan-jing-da-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="程序员都要掌握的Git">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Webpack入门(2) - 安装，配置，环境搭建">
                         
-                        <span class="card-title">程序员都要掌握的Git</span>
+                        <span class="card-title">Webpack入门(2) - 安装，配置，环境搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文是参考廖雪峰老师的Git资料再加上我自己对Git的理解，记录我的Git学习历程，作下此文是为以后学习，工作，开发中如果遇到问题可以回过头来参考参考。
+                            前端打包工具
                         
                     </div>
                     <div class="publish-info">
@@ -714,8 +856,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Webpack/">
+                        <span class="chip bg-color">Webpack</span>
                     </a>
                     
                 </div>
