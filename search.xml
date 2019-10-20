@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>一文搞懂CSS中的字体单位大小</title>
+      <link href="/2019/10/20/yi-wen-gao-dong-css-zhong-de-zi-ti-dan-wei-da-xiao/"/>
+      <url>/2019/10/20/yi-wen-gao-dong-css-zhong-de-zi-ti-dan-wei-da-xiao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在学习的过程中,发现CSS有很多可以描述单位的尺寸。比如<code>px</code>,<code>em</code>,<code>rem</code>,<code>vw</code>等等。平时也没有深究，一来是没时间，二来是在我学习清单中优先级过低。一直想彻底弄明白，一直耽搁到现在。现在花上一点时间来整理一下，彻底弄懂它。</p><h1 id="CSS长度单位"><a href="#CSS长度单位" class="headerlink" title="CSS长度单位"></a>CSS长度单位</h1><ul><li>绝对长度单位。<br>绝对长度单位表示为一个固定的值，不会改变。<strong>不利于页面渲染。</strong><ul><li>in,英寸</li><li>cm, 里面</li><li>mm, 毫米</li><li>pt</li><li>pc</li></ul></li><li>相对长度单位。<br>其长度单位会随着它的参考值的变化而变化。<ul><li>px,像素</li><li>em,元素的字体高度</li><li>%,百分比</li><li>rem,根元素的font-size</li><li>vm,视窗宽度，1vw=视窗宽度的1%</li><li>vh,视窗高度，1vh=视窗高度的1%</li></ul></li></ul><h1 id="物理像素-设备像素"><a href="#物理像素-设备像素" class="headerlink" title="物理像素(设备像素)"></a>物理像素(设备像素)</h1><p>比如有一个图片，细分，最小单位就是像素。也就是说，图片由许多的像素构成。像素是小方块，这些小方块都有一个明确的位置和被分配的色彩数值，小方格颜色和位置就决定该图像所呈现出来的样子。</p><p><img src="https://user-gold-cdn.xitu.io/2019/7/25/16c27296fdd981a5?w=261&h=193&f=png&s=102964" alt=""><br><strong>一个设备生产出来，它们的像素就已经确定了。iPhone5的分辨率是<code>640x1136px</code>,代表屏幕由640行，1136列像素小方块组成。</strong></p><pre><code>为了理解像素和避免与CSS像素混淆，可以将物理像素当做物理小方块。比如iPhone5的像素是640X1136px,可以当做640*1136个小方块。</code></pre><h1 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h1><p>也叫做解析度，解像度。可以从显示分辨率与图像分辨率两个方向来分类。</p><ul><li>屏幕分辨率。是屏幕图像的精密度，是指显示器所能显示的像素有多少，即显示器可以可以显示的小方块有多少个。<ul><li><strong>显示器的可显示的小方块越多，画面就越精细，同样的屏幕区域内能显示的信息也越多</strong></li><li>可以把整个图像想象成是一个大型的棋盘，而分辨率的表示方式就是所有经线和纬线交叉点的数目。棋盘的小方块越多，可以放的棋子就越多。</li><li>显示分辨率一定的情况下，显示屏越小图像越清晰，反之，显示屏大小固定时，显示分辨率越高图像越清晰。(<strong>小方块一样多的情况下，显示屏越小越清晰；屏幕大小一样大的时候，小方块越多图形越清晰</strong>)<h1 id="CSS像素px"><a href="#CSS像素px" class="headerlink" title="CSS像素px"></a>CSS像素px</h1>CSS像素的单位也叫做<strong>px</strong>。它是图像显示的基本单元，既不是一个确定的物理量，也不是一个点或者小方块，而是一个抽象概念。所以在谈论像素时一定要清楚<strong>它的上下文！</strong></li></ul></li><li>为了保证阅读体验一致，CSS可以自动在不同设备之间可以调节。即一份代码可以在不同的大小的设备之间显示，并且可以保证阅读体验一致。</li><li>默认情况下一个CSS像素应该是等于一个物理像素的宽度。</li><li>但是在高PPI的设备上，CSS像素甚至在默认状态下就相当于多个物理像素的尺寸。比如iPhone的屏幕对比一般的手机屏幕会看起来更精细清晰一些。</li><li>在浏览器上通过<code>ctrl +/-</code>可以扩大缩小屏幕，其实就是屏幕分辩率的调低/调高。<code>ctrl +</code>屏幕放大，分辨率降低。</li><li>iPhone6,7,8都是两倍屏手机，即一个CSS像素等于2物理像素。iPhone6Plus等是三倍屏手机，一个CSS像素等于3物理像素。</li><li>以iPhone6为例，设计稿给出一个图片宽高为40*40。在实际开发中要除以2，宽高要写成20x20。因为iPhone6是两倍屏手机。</li></ul><h1 id="em"><a href="#em" class="headerlink" title="em"></a>em</h1><p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，<strong>则相对于浏览器的默认字体尺寸,浏览器字体默认为16px</strong>。</p><ul><li>所以，1em = 16px。默认情况下。<h2 id="如何高效使用em呢"><a href="#如何高效使用em呢" class="headerlink" title="如何高效使用em呢"></a>如何高效使用em呢</h2></li><li>body里声明font-size:62.5%。即全局声明<code>1em = 16px * 62.5% = 10px</code></li><li>之后可以把<code>em</code>当做<code>px</code>使用。当然此时，<code>1em = 10px</code></li><li>如果在父容器里说明了<code>font-size:20px</code>,那么在子容器里的<code>1em</code>就等于<code>20px</code>。</li></ul><h1 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h1><p>rem单位是相对于字体大小的<strong>html元素</strong>，也称为根元素。</p><pre><code>html {  font-size: 10px; /* 不建议设置 font-size: 62.5%; 在 IE 9-11 上有偏差，具体表现为 1rem = 9.93px。 */}.sqaure {  width: 5rem;  /* 50px */  height: 5rem; /* 50px */}</code></pre><h1 id="em与rem"><a href="#em与rem" class="headerlink" title="em与rem"></a>em与rem</h1><ul><li>rem是相对于根元素（html）的字体大小，而em是相对于其父元素的字体大小。</li><li>em最多取到小数点的后三位<pre><code>&lt;style&gt;html{ font-size: 20px; }body{   font-size: 1.4rem;  /* 1rem = 28px */  padding: 0.7rem;  /* 0.7rem = 14px */} div{  padding: 1em;  /* 1em = 28px */}span{  font-size:1rem;  /* 1rem = 20px */  padding: 0.9em;  /* 1em = 18px */}&lt;/style&gt;</code></pre></li></ul><html>  <body>    <div>         <span></span>      </div>  </body></html>```上面的例子中，发现了一个有意思的情况。`em 会层层继承父元素的字体大小`，很容易造成字体大小的混乱。所以以后用`rem`会更好。<h1 id="rpx"><a href="#rpx" class="headerlink" title="rpx"></a>rpx</h1><p><strong>rpx 是微信小程序解决自适应屏幕尺寸的尺寸单位。微信小程序规定屏幕的宽度为750rpx。</strong></p><p>无论是在iPhone6上面还是其他机型上面都是750rpx的屏幕宽度，拿iPhone6来讲，屏幕宽度为375px，把它分为750rpx后， 1rpx = 0.5px = 1物理像素。</p><p><img src="https://user-gold-cdn.xitu.io/2019/7/25/16c29bee71b0c4c4" alt=""></p><h1 id="vw-和-vh"><a href="#vw-和-vh" class="headerlink" title="vw 和 vh"></a>vw 和 vh</h1><ul><li><code>vw</code>,视窗宽度，1vw=视窗宽度的1%</li><li><code>vh</code>,视窗高度，1vh=视窗高度的1%</li><li>如果浏览器的高是900px,1vh求得的值为9px。同理，如果显示窗口宽度为750px,1vw求得的值为7.5px。</li></ul><h1 id="vmin-和-vmax"><a href="#vmin-和-vmax" class="headerlink" title="vmin 和 vmax"></a>vmin 和 vmax</h1><ul><li>vmin和vmax是相对于视口的高度和宽度两者之间的最小值或最大值。</li><li>浏览器的高为1100px、宽为700px，那么1vmin就是7px，1vmax就是11px</li><li>浏览器的高为800px，宽为1080px，那么1vmin也是8px，1vmax也是10.8px</li><li>vmin取宽度高度两者更小者/100</li><li>vmax取宽度高度两者更大者/100<h2 id="哪些地方可以用到"><a href="#哪些地方可以用到" class="headerlink" title="哪些地方可以用到"></a>哪些地方可以用到</h2></li><li>一个总是在屏幕上可见的元素。使用高度和宽度设置为低于100的vmin值将可以实现这个效果。</li><li>一个总是覆盖可视窗口的正方形(一直接触屏幕的四条边)<pre><code>.box {  height: 100vmax;  width: 100vmax;}</code></pre><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><a href="https://github.com/wujunchuan/wujunchuan.github.io/issues/15" target="_blank" rel="noopener">前端开发中像素的概念</a></li></ul><p><a href="http://www.360doc.com/content/19/0327/15/63018409_824523443.shtml" target="_blank" rel="noopener">最全的CSS尺寸单位介绍</a></p><p><a href="http://www.divcss5.com/css3-style/c33196.shtml" target="_blank" rel="noopener">CSS3中常见的单位</a><br><a href="http://www.mamicode.com/info-detail-2439333.html" target="_blank" rel="noopener">移动设备分辨率（终于弄懂了为什么移动端设计稿总是640px和750px）</a></p><p><a href="https://www.jianshu.com/p/e377208aaadd" target="_blank" rel="noopener">几个CSS的单位你需要了解一下</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>程序员都要掌握的Git</title>
       <link href="/2019/10/20/cheng-xu-yuan-du-yao-zhang-wo-de-git/"/>
       <url>/2019/10/20/cheng-xu-yuan-du-yao-zhang-wo-de-git/</url>
