@@ -4,12 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Webpack入门(2) - 安装，配置，环境搭建, 你喜欢吃青椒么">
-    <meta name="description" content="webpack入门(1)-“图解什么是webpack”传送门
-初始化和安装
-在工作目录新建一个文件夹
-npm init 初始化一个文件夹,出现对话框按确定就行。
-npm install --global webpack 全局安装，在c盘下会">
+    <meta name="keywords" content="Hexo + GitHub 生成个人博客, 你喜欢吃青椒么">
+    <meta name="description" content="前言本篇文章记录一下我生成个人博客的过程。顺便分享给有需要的人。
+如果您需要开发个人博客，需要：
+
+最基础的前端知识就行。
+用markdown的语法来写文章。
+有GitHub账号。
+安装好了Git和node
+知道npm操作。
+
+什么是Hex">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@ npm install --global webpack 全局安装，在c盘下会">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Webpack入门(2) - 安装，配置，环境搭建 | 你喜欢吃青椒么</title>
+    <title>Hexo + GitHub 生成个人博客 | 你喜欢吃青椒么</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -264,13 +269,13 @@ npm install --global webpack 全局安装，在c盘下会">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Webpack入门(2) - 安装，配置，环境搭建
+                        Hexo + GitHub 生成个人博客
                     </div>
                 </div>
             </div>
@@ -382,8 +387,12 @@ npm install --global webpack 全局安装，在c盘下会">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Webpack/">
-                                <span class="chip bg-color">Webpack</span>
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/Markdown/">
+                                <span class="chip bg-color">Markdown</span>
                             </a>
                         
                     </div>
@@ -394,8 +403,8 @@ npm install --global webpack 全局安装，在c盘下会">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/Hexo/" class="post-category">
+                                Hexo
                             </a>
                         
                     </div>
@@ -413,14 +422,14 @@ npm install --global webpack 全局安装，在c盘下会">
                     
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.6k
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        4 分
                     </div>
                     
                 
@@ -436,84 +445,91 @@ npm install --global webpack 全局安装，在c盘下会">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a href="https://juejin.im/post/5d1867c76fb9a07eec59dfa6" target="_blank" rel="noopener">webpack入门(1)-“图解什么是webpack”</a>传送门</p>
-<h1 id="初始化和安装"><a href="#初始化和安装" class="headerlink" title="初始化和安装"></a>初始化和安装</h1><ul>
-<li>在工作目录新建一个文件夹</li>
-<li><code>npm init</code> 初始化一个文件夹,出现对话框按确定就行。</li>
-<li><code>npm install --global webpack</code> 全局安装，在c盘下会生成node_modules文件夹中会包含webpack。<code>请注意，这不是推荐的做法。全局安装会将您锁定到特定版本的webpack，并且在使用不同版本的项目中可能会失败。</code>官方并不推荐全局安装。</li>
-<li><code>npm install --save-dev webpack</code> 安装在本地开发环境中</li>
-<li><code>npm install --save-dev webpack-cli</code> webpack4之后要安装cli。把cli安装到开发环境中。</li>
-<li><code>-D</code>就是<code>--save-dev</code>的缩写</li>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇文章记录一下我生成个人博客的过程。顺便分享给有需要的人。</p>
+<p>如果您需要开发个人博客，需要：</p>
+<ul>
+<li>最基础的前端知识就行。</li>
+<li>用<code>markdown</code>的语法来写文章。</li>
+<li>有<code>GitHub</code>账号。</li>
+<li>安装好了<code>Git</code>和<code>node</code></li>
+<li>知道<code>npm</code>操作。</li>
 </ul>
-<h1 id="打包一个简单的文件"><a href="#打包一个简单的文件" class="headerlink" title="打包一个简单的文件"></a>打包一个简单的文件</h1><ul>
-<li>在文件夹下新建一个<code>src</code>文件,下面新建一个<code>main.js</code>文件。</li>
-<li>根目录下新建一个<code>webpack.config.js</code>文件。为什么要建这个文件，因为直接使用<code>webpack</code>，它会寻找<code>webpack.config.js</code>把它当成默认的配置去运行。此时它不需要指定任何参数，就能读取里面的内容。<pre><code>// webpack.config.js
-module.exports = {
-  entry: __dirname + &#39;/src/main.js&#39;,//我指定了入口文件，在src/main.js
-  output: { 
-      path: __dirname + &#39;/dist&#39;, //打包后指定存放的目录,放在dist
-      filename: &#39;bundle.js&#39; //打包后的文件叫bundle.js
-  }
-}</code></pre></li>
+<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h2><p><code>Hexo</code> 是一个快速、简洁且高效的博客框架。<code>Hexo</code>使用 <code>Markdown</code>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p><code>hexo</code> 正常来说，不需要部署到我们的服务器上，我们的服务器上保存的，其实是基于在<code>hexo</code>通过<code>markdown</code>编写的文章，然后<code>hexo</code>帮我们生成静态的<code>html</code>页面，然后，将生成的html上传到我们的服务器（或者是GitHub上）。<strong>简而言之：hexo是个静态页面生成、上传的工具</strong>。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/10/16/16dd438b19052027?w=944&h=170&f=png&s=21313" alt=""></p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><pre><code>$ npm install hexo-cli -g //全局安装hexo
+$ hexo init blog //对blog文件夹初始化(这一步会很慢)
+$ npm install //安装所需要的组件
+$ hexo g //编译生成静态页面
+$ hexo s //启动本地服务</code></pre><p>启动本地服务之后，根据终端的提示打开<code>http://localhost:4000/</code>可以在本地查看到博客。如下图所示。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/10/19/16de1f68dde51b93?w=1887&h=899&f=png&s=1209434" alt=""></p>
+<h2 id="绑定GitHub"><a href="#绑定GitHub" class="headerlink" title="绑定GitHub"></a>绑定GitHub</h2><p>上一步在本地查看到了博客，如果别人想通过在浏览器输入地址来访问你的博客怎么办？</p>
+<p>让你的<code>Hexo</code>与<code>GitHub</code>仓库绑定。这样别人就可以访问了。</p>
+<h3 id="获取本机SSH口令"><a href="#获取本机SSH口令" class="headerlink" title="获取本机SSH口令"></a>获取本机SSH口令</h3><p><code>ssh keys</code>就是用来使本地<code>git</code> 项目与github联系。</p>
+<ul>
+<li><p>提交过代码到<code>GitHub</code>上的同学代表着已经让<code>git</code>仓库绑定到了<code>GitHub</code>上了。就不必再配置<code>SSH 口令了</code>。</p>
+</li>
+<li><p>如果没有绑定的话。</p>
+<ul>
+<li><code>$ ssh-keygen -t rsa -C &quot;邮件地址@youremail.com&quot; //ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;</code></li>
+<li>提示<code>Enter passphrase (empty for no passphrase):</code>设置密码</li>
+<li><code>Enter same passphrase again</code> 再次输入</li>
+<li><code>Your public key has been saved in /c/Users/user/.ssh/id_rsa.pub.</code>代表设置成功。</li>
+<li>找到<code>id_rsa.pub</code>文件，复制里面所有内容。</li>
+<li>来到<code>GitHub</code>主页面，路径为<code>Settings/SSH and GPG keys/New SSH key</code>。</li>
+<li><code>Title: blog //不一定非要是blog</code> </li>
+<li><code>key: 复制的内容</code></li>
+<li><code>Add SSH key</code> 完成SSH key 的绑定。</li>
+</ul>
+</li>
+<li><p>最后还要这一步。</p>
+<pre><code>$git config --global user.name &quot;你的名字&quot;
+$git config --global user.email &quot;你的邮箱&quot;</code></pre></li>
 </ul>
 <blockquote>
-<p>__dirname是Node.js中一个全局变量，它指向当前执行脚本所在的目录。<br>有多个入口文件的时候：<br><img src="https://user-gold-cdn.xitu.io/2019/7/3/16bb7d1cd83ec193?w=965&h=626&f=png&s=77448" alt=""></p>
+<p>Git还不清楚的同学可以戳<a href="https://juejin.im/post/5d157bf3f265da1bcc1954e6" target="_blank" rel="noopener">Git笔记</a></p>
 </blockquote>
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><ul>
+<li>平时我们创建仓库会直接写你要创建的仓库名就OK。比如建一个<code>Node</code>的仓库直接填<code>Node</code>就行了。</li>
+</ul>
+<p><strong>但是，博客的仓库地址不一样，必须为<code>你的GitHub名+ github.io</code> 。比如我的博客仓库名就叫做<code>zhongjunhaoz.github.io</code>。必须按照此种格式去填写。</strong></p>
+<h2 id="blog文件的基本配置"><a href="#blog文件的基本配置" class="headerlink" title="blog文件的基本配置"></a>blog文件的基本配置</h2><ul>
+<li>配置<code>_config.yml</code>文件。<pre><code>title: **My Blog** #博客名
+subtitle: to be continued... #副标题
+description: My blog #给搜索引擎看的，对网站的描述，可以自定义
+author: **Yourname** #作者，在博客底部可以看到
+email: yourname@yourmail.com #你的联系邮箱
+language: **zh-CN** #中文。如果不填则默认英文
+timezone: Asia/Shanghai
+# URL #这项暂不配置，绑定域名后，欲创建sitemap.xml需要配置该项
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://yoursite.com
+# Writing 文章布局、写作格式的定义，不修改
+# Archives 默认值为2，这里都修改为1，相应页面就只会列出标题，而非全文
+# Server 不修改
+# Date / Time format 日期格式，可以修改成自己喜欢的格式
+# Pagination 每页显示文章数，可以自定义，贴主设置的是10
+</code></pre></li>
+</ul>
+<pre><code>- 配置`_config.yml`文件下的`Deploy`</code></pre><p>deploy:<br>  type: git<br>  repository: 你的仓库地址<br>  name: GitHub名<br>  email: 邮箱<br>  branch: master</p>
+<pre><code>- 安装插件
+`npm install hexo-deployer-git --save`
+- 准备上传到github仓库。</code></pre><ul>
+<li>hexo clean //清除之前的缓存</li>
+<li>hexo g  // 生成静态文件</li>
+<li>hexo d  //上传至仓库<br>```</li>
+<li>接着在浏览器输入<code>你的GitHub名+ github.io</code>就可以访问你的个人博客了。</li>
+<li><a href="https://zhongjunhaoz.github.io/">https://zhongjunhaoz.github.io/</a>  这是我的个人博客。</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2019/10/19/16de28c0c64ce460?w=1897&h=1005&f=png&s=554623" alt=""></p>
+<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><p>原生的博客主题有点丑，我们可以选择自己喜欢的主题添加到自己的博客中。</p>
 <ul>
-<li>如果你一开始你就不想运行默认的<code>webpack.config.js</code>,你想运行其他的配置文件,比如<code>config.js</code>文件。你可以运行<code>webpack --config config.js</code>,这样它就会寻找<code>config.js</code>，并且运行它。</li>
-<li>运行<code>webpack</code>，它会自动的寻找<code>webpack.config.js</code>，找到其中的入口文件比如上面的<code>main.js</code>。</li>
-<li>如果你想有些个性化的需求，你想看到打包的进度，打包的模块，模块的信息，打包的原因。你可以输入以下的命令。<ul>
-<li><code>webpack --progress</code>可以看到打包的进度。</li>
-<li><code>webpack --progress --display-modules</code> 可以看到打包有几个模块，模块的信息。</li>
-<li><code>webpack ---progress --display-modules --display-reasons</code> 打包的原因显示出来。</li>
+<li>官方主题库：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题</a></li>
+<li>在这里我选择的是：<a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/" target="_blank" rel="noopener">闪烁之狐</a>。<strong>里面有对更改主题配置的文档。</strong></li>
 </ul>
-</li>
-<li>但是这种方法太过繁琐，你要在命令行输入这么多东西。那么有没有更轻松的方法呢？<strong>有的！</strong><ul>
-<li>在你初始化的时候，系统会自动生成<code>package.json</code>。现在找到根目录下的<code>package.json</code>文件。<br><img src="https://user-gold-cdn.xitu.io/2019/7/1/16bad8c1ca6b5add?w=514&h=294&f=png&s=18781" alt=""></li>
-<li>在里面的<code>scripts</code>下添加定义一个脚本，<pre><code>&quot;dev&quot;:&quot;webpack --config webpack.config.js --progress --display-modules --colors --display-reasons&quot;</code></pre></li>
-<li>最后在命令行运行<code>npm run dev</code></li>
-</ul>
-  <strong>因为scripts脚本提供了命令的“别名”，像上面的以一个“dev”命令代替了一连串的命令，使用起来更为方便</strong>,即便你没有在命令行输入以上的配置，你依然可以看到打包的进度；以看到打包有几个模块，模块的信息；字体为彩色；打包的原因。因为你在配置文件下定义了，就不需要了。</li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2019/7/3/16bb5173b3f3e78e?w=578&h=714&f=png&s=97412" alt=""></p>
-<h1 id="更快捷的执行打包任务"><a href="#更快捷的执行打包任务" class="headerlink" title="更快捷的执行打包任务"></a>更快捷的执行打包任务</h1><ul>
-<li>最原始的执行打包任务，可以使用命令<code>webpack main.js bundle.js</code>在这个例子当中，<code>main.js</code>是入口文件，<code>bundle.js</code> 打包完之后的文件。</li>
-<li>第二种，我们可以在<code>webpack.config.js</code>里写配置。<pre><code>module.exports = {
-entry:  __dirname + &quot;/app/main.js&quot;,//唯一入口文件
-output: {
-  path: __dirname + &quot;/public&quot;,//打包后的文件存放的地方
-  filename: &quot;bundle.js&quot;//打包后输出文件的文件名
-}
-}</code></pre>我们只需要输入<code>webpack</code>命令，webpack就能自己找到<code>webpack.config.js</code>，在找出入口，找到output,执行打包。</li>
-<li>第三种，继承第二种。更简单快捷的执行打包。在<code>package.json</code>里找到“scripts”脚本，添加<pre><code>&quot;start&quot;: &quot;webpack --config webpack.config.js --progress --display-modules --colors --display-reasons&quot;</code></pre>然后我们只需要<code>npm start</code>就可以打包了。<pre class=" language-!"><code class="language-!">需要注意的是,“start”在npm中比较特殊，只需npm start 就可以执行命令。如果是非start,还要再在前面加上一个run ,比如npm run dev,npm run build</code></pre>
-</li>
-</ul>
-<h1 id="搭建开发环境"><a href="#搭建开发环境" class="headerlink" title="搭建开发环境"></a>搭建开发环境</h1><h2 id="使用source-maps进行调试调试"><a href="#使用source-maps进行调试调试" class="headerlink" title="使用source maps进行调试调试"></a>使用source maps进行调试调试</h2><h3 id="为何要使用source-maps？"><a href="#为何要使用source-maps？" class="headerlink" title="为何要使用source maps？"></a>为何要使用source maps？</h3><p>因为<code>webpack</code>对源代码进行打包后，会对源代码进行压缩、精简、甚至变量名替换，在浏览器中，无法对代码逐行打断点进行调试，所有需要使用<code>source maps</code>进行调试，它使得我们在浏览器中可以看到源代码，进而逐行打断点调试。</p>
-<h3 id="如何使用source-maps？"><a href="#如何使用source-maps？" class="headerlink" title="如何使用source maps？"></a>如何使用source maps？</h3><p>在配置中添加<code>devtool</code>属性，赋值为<code>source-map</code>或者<code>inline-source-map</code>即可，后者报错信息更加具体，会指示源代码中的具体错误位置，而<code>source-map</code>选项无法指示到源代码中的具体位置。</p>
-<h2 id="使用开发工具"><a href="#使用开发工具" class="headerlink" title="使用开发工具"></a>使用开发工具</h2><p>用开发工具可以简化开发过程的工作。比如你写完代码后保存开发工具可以自动帮你执行一系列的命令。</p>
-<h3 id="watch模式"><a href="#watch模式" class="headerlink" title="watch模式"></a>watch模式</h3><p>在使用<code>webpack-cli</code>进行打包时，通过命令<code>webpack --watch</code>即可开启<code>watch</code>模式，进入<code>watch</code>模式之后，一旦依赖树中的某一个模块发生了变化，<code>webpack</code>就会重新进行编译。</p>
-<h3 id="使用webpack-dev-server"><a href="#使用webpack-dev-server" class="headerlink" title="使用webpack-dev-server"></a>使用webpack-dev-server</h3><p>浏览器监听你的代码的修改，并自动刷新显示修改后的结果。它是一个单独的组件，在webpack中进行配置之前需要单独安装它作为项目依赖。</p>
-<ul>
-<li>安装。<code>npm install --save-dev webpack-dev-server</code></li>
-<li>修改配置文件，添加<code>devServer</code>属性<pre><code>// webpack.config.js
-module.exports = {
-    devServer: {
-        contentBase: &#39;./dist&#39;,//本地服务器所加载的页面所在目录
-        historyApiFallback: true,//不跳转
-        inline: true //实时刷新
-    }
-};</code></pre></li>
-<li>在<code>package.json</code> 添加脚本<pre><code>// package.json
-{
-    &quot;scripts&quot;: {
-        &quot;start&quot;: &quot;webpack-dev-server --open&quot;
-    }
-}</code></pre></li>
-<li>运行命令<br><code>npm run start</code>即可在本地的8080端口查看结果。</li>
-<li>搭建开发环境远不止这些内容，我只挑了我在学习过程中经常用到的地方，或者我觉得重要的地方。</li>
-</ul>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>webpack很难啃，我是在网上找资料看视频，一点一点摸索。网上的资料时间维度大，有的还在讲webpack1.0,有的在讲最新版的webpack,<strong>所以在整理的时候难免有出错的地方。欢迎在下方评论指出错误！</strong>  </p>
-<p>未完待续…</p>
+<h2 id="网站效果"><a href="#网站效果" class="headerlink" title="网站效果"></a>网站效果</h2><p><img src="https://user-gold-cdn.xitu.io/2019/10/20/16de7143fc28e327?w=1898&h=964&f=png&s=1542846" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/10/20/16de714eac983fbf?w=1899&h=962&f=png&s=1338643" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/10/20/16de715fadb4cf90?w=1899&h=957&f=png&s=570306" alt=""></p>
 
             </div>
             <hr/>
@@ -527,8 +543,12 @@ module.exports = {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Webpack/">
-                                    <span class="chip bg-color">Webpack</span>
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
+                                <a href="/tags/Markdown/">
+                                    <span class="chip bg-color">Markdown</span>
                                 </a>
                             
                         </div>
@@ -695,46 +715,52 @@ module.exports = {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/20/webpack-ru-men-3-he-xin-nei-rong/">
+                <a href="/2019/10/20/hexo-github-sheng-cheng-ge-ren-bo-ke/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Webpack入门(3) - 核心内容">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Hexo + GitHub 生成个人博客">
                         
-                        <span class="card-title">Webpack入门(3) - 核心内容</span>
+                        <span class="card-title">Hexo + GitHub 生成个人博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前端打包工具
+                            Hexo是一个快速、简洁且高效的博客框架。Hexo使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/Hexo/" class="post-category">
+                                    Hexo
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>
@@ -748,19 +774,19 @@ module.exports = {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/20/webpack-ru-men-1-tu-jie-webpack-shi-shi-me/">
+                <a href="/2019/10/20/yi-wen-gao-dong-css-zhong-de-zi-ti-dan-wei-da-xiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Webpack入门(1) - 图解Webpack是什么">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="一文搞懂CSS中的字体单位大小">
                         
-                        <span class="card-title">Webpack入门(1) - 图解Webpack是什么</span>
+                        <span class="card-title">一文搞懂CSS中的字体单位大小</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前端打包工具
+                            在学习的过程中,发现CSS有很多可以描述单位的尺寸。比如`px`,`em`,`rem`,`vw`等等。平时也没有深究，一来是没时间，二来是在我学习清单中优先级过低。一直想彻底弄明白，一直耽搁到现在。现在花上一点时间来整理一下，彻底弄懂它。
                         
                     </div>
                     <div class="publish-info">
@@ -782,8 +808,8 @@ module.exports = {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
