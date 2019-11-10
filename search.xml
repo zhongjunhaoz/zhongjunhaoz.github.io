@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>响应式布局方法总结</title>
+      <link href="/2019/11/10/xiang-ying-shi-bu-ju-fang-fa-zong-jie/"/>
+      <url>/2019/11/10/xiang-ying-shi-bu-ju-fang-fa-zong-jie/</url>
+      
+        <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>响应式布局指的是同一页面在不同屏幕尺寸下有不同的布局。传统的开发方式是PC端开发一套，手机端再开发一套，而使用响应式布局只要开发一套就够。</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul><li>面对不同分辨率设备灵活性强</li><li>能够快捷解决多设备显示适应问题<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2></li><li>仅适用布局、信息、框架并不复杂的部门类型网站</li><li>兼容各种设备工作量大，效率低下</li><li>代码累赘，会出现隐藏无用的元素，加载时间加长</li><li>其实这是一种折中性质的设计解决方案，多方面因素影响而达不到最佳效果</li><li>一定程度上改变了网站原有的布局结构，会出现用户混淆的情况<h1 id="响应式与自适应区别"><a href="#响应式与自适应区别" class="headerlink" title="响应式与自适应区别"></a>响应式与自适应区别</h1></li><li>响应式：只需要开发一套代码。<br>  响应式设计通过检测视口分辨率，针对不同客户端在客户端做代码处理，来展现不同的布局和内容。</li><li>自适应：需要开发多套界面。<br>  通过检测视口分辨率，来判断当前访问的设备是：pc端、平板、手机，<strong>从而请求服务层，返回不同的页面。</strong></li></ul><h1 id="响应式布局方法一：媒体查询"><a href="#响应式布局方法一：媒体查询" class="headerlink" title="响应式布局方法一：媒体查询"></a>响应式布局方法一：媒体查询</h1><p>使用<code>@media</code>媒体查询可以针对不同的媒体类型定义不同的样式，特别是响应式页面，可以针对不同屏幕的大小，编写多套样式，从而达到自适应的效果。举例来说：</p><pre><code>@media screen and (max-width: 960px){    body{      background-color:#FF6699    }}@media screen and (max-width: 768px){    body{      background-color:#00FF66;    }}@media screen and (max-width: 550px){    body{      background-color:#6633FF;    }}@media screen and (max-width: 320px){    body{      background-color:#FFFF00;    }}</code></pre><p>上述的代码通过媒体查询定义了几套样式，通过max-width设置样式生效时的最大分辨率，上述的代码分别对分辨率在0～320px，320px～550px，550px～768px以及768px～960px的屏幕设置了不同的背景颜色。</p><p>通过媒体查询，可以通过给不同分辨率的设备编写不同的样式来实现响应式的布局，<strong>比如我们为不同分辨率的屏幕，设置不同的背景图片。比如给小屏幕手机设置@2x图，为大屏幕手机设置@3x图，通过媒体查询就能很方便的实现。</strong></p><p>但是媒体查询的缺点也很明显，如果在<strong>浏览器大小改变时，需要改变的样式太多</strong>，那么多套样式代码会很繁琐。</p><h1 id="响应式布局方法二：百分比"><a href="#响应式布局方法二：百分比" class="headerlink" title="响应式布局方法二：百分比%"></a>响应式布局方法二：百分比%</h1><p>比如当浏览器的宽度或者高度发生变化时，通过百分比单位，通过百分比单位可以使得浏览器中的组件的宽和高随着浏览器的变化而变化，从而实现响应式的效果。</p><p>height,width属性的百分比依托于父标签的宽高。但是，<strong>padding、border、margin等属性的情况又不一样？</strong></p><ul><li>子元素的top和bottom如果设置百分比，则相对于直接非static定位(默认定位)的父元素的高度，同样，子元素的left和right如果设置百分比，则相对于直接非static定位(默认定位的)父元素的宽度。</li><li>子元素的padding如果设置百分比，不论是垂直方向或者是水平方向，都相对于直接父亲元素的width，而与父元素的height无关。</li><li>子元素的margin如果设置成百分比，不论是垂直方向还是水平方向，都相对于直接父元素的width</li><li>border-radius不一样，如果设置border-radius为百分比，则是相对于自身的宽度</li></ul><h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><ul><li>计算困难，如果我们要定义一个元素的宽度和高度，按照设计稿，必须换算成百分比单位。 </li><li>各个属性中如果使用百分比，相对父元素的属性并不是唯一的。比如width和height相对于父元素的width和height，而margin、padding不管垂直还是水平方向都相对比父元素的宽度、border-radius则是相对于元素自身等等，造成我们使用百分比单位容易使布局问题变得复杂。</li><li>所以，<strong>不建议用%来做响应式布局。</strong><h1 id="响应式布局方法三：vw-vh"><a href="#响应式布局方法三：vw-vh" class="headerlink" title="响应式布局方法三：vw/vh"></a>响应式布局方法三：vw/vh</h1>css3中引入了一个新的单位vw/vh，与视图窗口有关，vw表示相对于视图窗口的宽度，vh表示相对于视图窗口高度。<br>任意层级元素，在使用vw单位的情况下，1vw都等于视图宽度的百分之一。</li></ul><p>与百分比布局很相似，但更好用。</p><h1 id="响应式布局方法四：rem"><a href="#响应式布局方法四：rem" class="headerlink" title="响应式布局方法四：rem"></a>响应式布局方法四：rem</h1><p>rem单位是相对于字体大小的html元素，也称为根元素。<br>默认情况下，html元素的font-size为16px。所以此时1rem = 16px。</p><h2 id="第一版"><a href="#第一版" class="headerlink" title="第一版"></a>第一版</h2><pre><code>@media screen and (max-width: 414px) {  html {    font-size: 18px  }}@media screen and (max-width: 375px) {  html {    font-size: 16px  }}@media screen and (max-width: 320px) {  html {    font-size: 12px  }}</code></pre><p>利用rem和媒体查询，在分辨率发生变换时，给它不同的font-size。</p><h2 id="优化版"><a href="#优化版" class="headerlink" title="优化版"></a>优化版</h2><pre><code>//动态为根元素设置字体大小function init () {    // 获取屏幕宽度    var width = document.documentElement.clientWidth    // 设置根元素字体大小。此时为宽的10等分    document.documentElement.style.fontSize = width / 10 + &#39;px&#39;}//首次加载应用，设置一次init()// 监听手机旋转的事件的时机，重新设置window.addEventListener(&#39;orientationchange&#39;, init)// 监听手机窗口变化，重新设置window.addEventListener(&#39;resize&#39;, init)</code></pre><p>理解：上面代码实现了，无论设备可视窗口如何变化，始终设置rem为width的1/10.即实现了百分比布局。就没有第一版的媒体查询那样僵硬。</p><blockquote><p>以上代码需在dom之前写入（可放在head里面第一个script标签）</p></blockquote><h1 id="利用UI框架实现响应式布局"><a href="#利用UI框架实现响应式布局" class="headerlink" title="利用UI框架实现响应式布局"></a>利用UI框架实现响应式布局</h1><p>其实，现在的主流UI框架都会考虑到响应式布局这个问题，比如elementUI，iview等框架提供了<strong>栅格</strong>系统，<code>&lt;row&gt;</code>搭配<code>&lt;col&gt;</code>来实现响应式布局。<br>所以在工作中直接拿来使用就完事了。</p><h1 id="移动端响应式布局-viewport"><a href="#移动端响应式布局-viewport" class="headerlink" title="移动端响应式布局 viewport"></a>移动端响应式布局 viewport</h1><pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;</code></pre><ul><li>width=device-width: 是自适应手机屏幕的尺寸宽度。</li><li>maximum-scale:是缩放比例的最大值。</li><li>minimum-scale:是缩放比例的最小值。</li><li>inital-scale:是缩放的初始化。</li><li>user-scalable:是用户的可以缩放的操作。</li></ul><blockquote><p>这个写法是用户不能缩放的页面设计。因为，如果页面能缩放的话，就会影响用户的体验，在手机端，我们都可以找到点击的按钮或者自己感兴趣的菜单进行操作。其二：就是我们如果让页面缩放的话，就完全暴露了我们手机app的程序是html的架构了。所以，我们专为移动端的设计页面的时候，就不需要用户进行缩放了。</p></blockquote><h1 id="flexible-js"><a href="#flexible-js" class="headerlink" title="flexible.js"></a>flexible.js</h1><p><code>flexible.js</code>是阿里手淘团队开发的。用来解决移动端的适配问题。    </p><ul><li>假设现在要适配一个iphone6的设备。<ul><li>设计师给了一个750px宽度的设计稿（注意这里是750px而不是375px）</li><li>前端工程师用750px的这个比例开始还原</li><li>把宽高是px的转换成rem</li><li>字体使用px而不使用rem</li><li><code>flexible.js</code>会自动判断dpr进行整个布局视口的放缩  </li></ul></li></ul><pre><code>至于`flexible.js`怎么使用的可以自行搜索，因为本人移动端做得少，就不再多说了。</code></pre><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://juejin.im/entry/59e70320f265da431c6f6514" target="_blank" rel="noopener">前端移动端适配总结</a> </p><p><a href="https://juejin.im/post/5caaa230e51d452b672f9703" target="_blank" rel="noopener">前端响应式布局原理与方案（详细版</a>   </p><p><a href="https://juejin.im/post/5b39905351882574c72f2808" target="_blank" rel="noopener">响应式布局的常用解决方案对比(媒体查询、百分比、rem和vw/vh）</a></p><p><a href="https://zhongjunhaoz.github.io/">欢迎访问我的博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo + GitHub 生成个人博客</title>
       <link href="/2019/10/20/hexo-github-sheng-cheng-ge-ren-bo-ke/"/>
       <url>/2019/10/20/hexo-github-sheng-cheng-ge-ren-bo-ke/</url>
@@ -47,7 +72,7 @@
       
         <tags>
             
-            <tag> CSS </tag>
+            <tag> CSS3 </tag>
             
         </tags>
       
