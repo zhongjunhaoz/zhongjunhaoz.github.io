@@ -4,13 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="从源头上解决HTTP面试问题 - 重学计算机网络系列(1), 你喜欢吃青椒么">
+    <meta name="keywords" content="常见的Web攻击及防御办法 - 重学计算机网络系列(5), 你喜欢吃青椒么">
     <meta name="description" content="
-前言
-这是关于计算机网络的一系列专题，后续会不断更新。
-因为是前端开发，所以我的重心是放在应用层，重中之重是应用层下面的HTTP协议。
-学习资料来源于 《计算机网络》(第七版) 和《图解HTTP》。
-本篇主要分享互联网概述，计算机网络体系">
+Web攻击分类简单的HTTP协议本身并不存在安全性问题，因此协议本身几乎不会成为攻击的对象。应用HTTP协议的服务器和客户端，以及运行在服务器上的Web应用等资源才是攻击目标。
+web应用的攻击模式有以下两种
+
+主动攻击(主要攻击服务器上">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>从源头上解决HTTP面试问题 - 重学计算机网络系列(1) | 你喜欢吃青椒么</title>
+    <title>常见的Web攻击及防御办法 - 重学计算机网络系列(5) | 你喜欢吃青椒么</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -265,13 +264,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        从源头上解决HTTP面试问题 - 重学计算机网络系列(1)
+                        常见的Web攻击及防御办法 - 重学计算机网络系列(5)
                     </div>
                 </div>
             </div>
@@ -414,14 +413,14 @@
                     
                     <div class="info-break-policy">
                         <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.5k
+                        5.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        11 分
+                        18 分
                     </div>
                     
                 
@@ -437,146 +436,240 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://user-gold-cdn.xitu.io/2019/12/27/16f4685e332d4a4b?w=1144&h=439&f=png&s=45298" alt=""></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li>这是关于计算机网络的<strong>一系列专题，后续会不断更新</strong>。</li>
-<li>因为是前端开发，所以我的重心是放在<strong>应用层</strong>，重中之重是应用层下面的<strong>HTTP协议</strong>。</li>
-<li>学习资料来源于 <strong>《计算机网络》(第七版) 和《图解HTTP》。</strong></li>
-<li>本篇主要分享<strong>互联网概述，计算机网络体系结构等</strong>知识。</li>
-</ul>
-<h1 id="互连网与互联网的区别"><a href="#互连网与互联网的区别" class="headerlink" title="互连网与互联网的区别"></a>互连网与互联网的区别</h1><h2 id="互连网"><a href="#互连网" class="headerlink" title="互连网"></a>互连网</h2><ul>
-<li>与网络相连的计算机称为主机。智能手机也可以称为主机。</li>
-<li>结点可以是<strong>计算机，集成器，交换机，路由器等</strong>。</li>
-<li>计算机网络（简称网络）由<strong>若干结点</strong>和连接这些结点的<strong>链路</strong>组成。</li>
-<li><strong>互连网</strong>：网络之间可以通过路由器互连起来，这就构成一个覆盖范围更大的计算机网络。</li>
-<li><strong>互连网是“网络的网络”</strong>，泛指由多个计算机网络互连而成的计算机网络。网络把许多计算机连接在一起。而<strong>互连网</strong>把许多网络通过路由器连接在一起。</li>
-</ul>
-<h2 id="互联网"><a href="#互联网" class="headerlink" title="互联网"></a>互联网</h2><ul>
-<li>也叫做因特网，不过现在不用了。</li>
-<li>互联网(专有名词)：指当前<strong>全球最大的</strong>，开放的，由众多网络相互连接而成的特定<strong>互连网</strong>。</li>
-<li>这也是为什么1994年中国接入互联网叫做<strong>接入</strong>，而不是其他动词。</li>
-<li>采用<strong>TCP/IP</strong>协议族作为通信的规则，前身是<code>ARPANET</code>。</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>计算机，交换机，路由器等 = 结点</li>
-<li>结点 + 链路 = 网络</li>
-<li>网络 + 网络 = 互连网</li>
-<li>互联网 = 全球最大的互连网</li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2019/11/10/16e53aaeea02db07?w=3703&h=1253&f=jpeg&s=909601" alt=""></p>
-<h1 id="互联网发展的几个阶段"><a href="#互联网发展的几个阶段" class="headerlink" title="互联网发展的几个阶段"></a>互联网发展的几个阶段</h1><ul>
-<li>第一阶段：1969美国国防部创建的第一个分组交换网<code>ARPANET</code>。（并不是一个互连的网络）所有要连接在<code>ARPANET</code>上的主机都直接与最近的结点交换机相连。<ul>
-<li>第二阶段：20世纪70年代中期，开始研究<strong>多种网络互连的技术</strong>，导致互连网络的出现。互联网的雏形。</li>
+                <p><img src="https://user-gold-cdn.xitu.io/2019/12/27/16f46871006b6c39?w=1144&h=439&f=png&s=45298" alt=""></p>
+<h1 id="Web攻击分类"><a href="#Web攻击分类" class="headerlink" title="Web攻击分类"></a>Web攻击分类</h1><p>简单的HTTP协议本身并不存在安全性问题，因此协议本身几乎不会成为攻击的对象。应用HTTP协议的<strong>服务器和客户端</strong>，以及运行在服务器上的<strong>Web应用</strong>等资源才是攻击目标。</p>
+<p>web应用的攻击模式有以下两种</p>
+<ul>
+<li>主动攻击(主要攻击服务器上的资源)<ul>
+<li>SQL注入攻击</li>
+<li>OS命令注入攻击</li>
+<li>其他</li>
 </ul>
 </li>
-<li>第三阶段：1983年，<code>TCP/IP</code>协议成为<code>ARPANET</code>上的标准协议，使所有使用<code>TCP/IP</code>协议的计算机都能利用互联网相互通信。互联网诞生。</li>
-<li>第四阶段：1985年。建成了三级结构的互联网<code>NSFNET</code>。分为主干网，地区网，校园网。基本覆盖了全美国主要的大学和研究所。</li>
-<li>第五阶段：世界上许多公司纷纷接入到互联网，网络通信急剧增大，满足不了需求。美国政府决定交给私人公司来经营，开始收费。于是，逐渐形成<strong>多层次ISP结构</strong>的互联网。1993年开始，三级结构的互联网<code>NSFNET</code>逐渐被若干个商用的互联网主干网替代。</li>
-</ul>
-<h1 id="ISP（互联网服务提供商）"><a href="#ISP（互联网服务提供商）" class="headerlink" title="ISP（互联网服务提供商）"></a>ISP（互联网服务提供商）</h1><ul>
-<li>中国电信，中国联通，中国移动等公司是中国最有名的ISP。</li>
-<li>ISP可以从互联网管理机构申请到很多IP地址。<strong>主机必须有IP地址才能上网</strong>，同时还有通信线路，路由器等联网设备。缴纳费用就能能获取所需IP地址的使用权。</li>
-<li>所谓上网就是通过ISP获得的IP地址接入互联网。</li>
-<li>ISP分为主干ISP，地区ISP，本地ISP。<ul>
-<li>主干ISP由专门的公司创建和维持，服务面积最大（一般能覆盖国家范围）</li>
-<li>地区ISP是一些较小的ISP。</li>
-<li>本地ISP给用户提供直接的服务。本地ISP可以是一个仅仅提供互联网服务的公司，也可以是一个拥有网络并向自己雇员提供服务的企业，或者是大学。</li>
+<li>被动攻击(主要攻击用户的资源和权限)  <ul>
+<li>跨站脚本攻击</li>
+<li>跨站点请求伪造</li>
+<li>点击劫持（与跨站请求伪造手法相似）</li>
+<li>HTTP首部注入攻击</li>
+<li>其他<h1 id="跨站脚本攻击（XSS）"><a href="#跨站脚本攻击（XSS）" class="headerlink" title="跨站脚本攻击（XSS）"></a>跨站脚本攻击（XSS）</h1>跨站脚本攻击（XSS）是指通过存在安全漏洞的Web网站注册用户的浏览器内<strong>运行非法的HTML标签或JavaScript</strong>进行的一种攻击。动态创建的HTML部分有可能隐藏着安全漏洞。就这样，攻击者编写脚本设下陷阱，用户在自己的浏览器上运行时，一不小心就会受到被动攻击。<strong>目的：利用网站漏洞从用户那里恶意盗取信息</strong>。</li>
 </ul>
 </li>
-<li>主机A和主机B通信的过程。主机A –&gt; 本地ISP –&gt; 地区ISP –&gt; 主干ISP –&gt; 地区ISP –&gt; 本地ISP –&gt; 主机B</li>
-<li>上面这种通信要经过层层阻拦，是否能绕过主干ISP，地区ISP直接和地区ISP直接通信呢？可以的。<strong>互联网交换点IXP</strong>的主要作用是允许两个网络直接相连并交换分组，而不需要再通过第三个网络来转发分组。 主机A –&gt; 本地ISP –&gt; 地区ISP –&gt; 地区ISP –&gt; 本地ISP –&gt; 主机B<br><img src="https://user-gold-cdn.xitu.io/2019/11/10/16e53ae0d72b8ae1?w=678&h=335&f=png&s=79228" alt=""></li>
 </ul>
-<h1 id="互联网的组成"><a href="#互联网的组成" class="headerlink" title="互联网的组成"></a>互联网的组成</h1><ul>
-<li>从工作方式可以分为两大块：边缘部分 + 核心部分。<ul>
-<li>边缘部分：由所有连接在互联网上的主机组成，用户直接使用。</li>
-<li>核心部分：由大量网络和连接这些网络的路由器组成。</li>
+<p>XSS攻击，通常指黑客通过“HTML注入”篡改了网页，插入了恶意的脚本，从而在用户浏览网页时，控制用户浏览器的一种攻击。在一开始，这种攻击的演示案例是跨域的，所以叫做“跨站脚本”。但是发展到今天，由于JavaScript的强大功能以及网站前端应用的复杂化，是否跨域已经不再重要。但是由于历史原因，XSS这个名字却一直保留下来。</p>
+<h2 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h2><ul>
+<li>反射型XSS（非持久型XSS）</li>
+<li>DOM型XSS（非持久性XSS）</li>
+<li>存储型XSS（持久性XSS攻击）</li>
 </ul>
+<h2 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h2><ul>
+<li>攻击构造出特殊的 URL ，其中包含恶意代码。（这个恶意代码诸如第三方的JS或document.cookie等）</li>
+<li>用户被诱导打开带有恶意代码的 URL，服务器端将恶意代码从 URL 中取出当做参数处理，然后返回给用户带有恶意代码的数据。</li>
+<li>用户浏览器接收到响应解析执行，混在其中的恶意代码也被执行。</li>
+<li>恶意代码窃取用户敏感数据发送给攻击者，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作。</li>
+</ul>
+<h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><blockquote>
+<p>从效果上来说也是反射型XSS，单独划分出来，是因为DOM Based XSS的形成原因比较特别，发现它的安全专家专门提出了这种类型的XSS。出于历史原因，也就把它单独作为一个分类了。</p>
+</blockquote>
+<ul>
+<li>攻击者构造出特殊的 URL，其中包含恶意代码。</li>
+<li>用户被诱导打开带有恶意代码的 URL。</li>
+<li>用户浏览器接收到响应后解析执行，前端 JavaScript 取出 URL 中的恶意代码并执行。</li>
+<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作。</li>
+</ul>
+<h2 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h2><p>存储型 XSS 跟 反射型 XSS 的区别是：存储型 XSS 的恶意代码存在服务器上，反射型 XSS 的恶意代码存在 URL 里。<strong>它是最危险的一种跨站脚本</strong>。比反射性 XSS 和 DOM 型 XSS 都更有隐蔽性，因为它不需要用户手动触发。<strong>任何允许用户存储数据的 Web 程序都可能存在存储型 XSS 漏洞</strong>。若某个页面遭受存储型 XSS 攻击，<strong>所有</strong>访问该页面的用户都会被 XSS 攻击。</p>
+<ul>
+<li>攻击者把恶意代码提交到目标网站的服务器中。</li>
+<li>用户打开目标网站，网站服务器端把带有恶意代码的数据取出，当做正常数据返回给用户。</li>
+<li>用户浏览器接收到响应解析执行，混在其中的恶意代码也被执行。</li>
+<li>恶意代码窃取用户敏感数据发送给攻击者，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作。</li>
+</ul>
+<h2 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h2><ul>
+<li>浏览器自带防御（X-XSS-Protection）<br>HTTP X-XSS-Protection 响应头是 Internet Explorer，Chrome 和 Safari 的一个功能，当检测到跨站脚本攻击(XSS)时，浏览器将停止加载页面。<code>其原理是检查 URL 和 DOM 中元素的相关性，但这并不能完全防止反射型 XSS，而且也并不是所有浏览器都支持 X-XSS-Protection。</code><pre><code>X-XSS-Protection: 0     
+禁止XSS过滤。     
+</code></pre></li>
+</ul>
+<p>X-XSS-Protection: 1<br>启用XSS过滤（通常浏览器是默认的）。 如果检测到跨站脚本攻击，浏览器将清除页面（删除不安全的部分）。  </p>
+<p>X-XSS-Protection: 1; mode=block<br>启用XSS过滤。 如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载。  </p>
+<p>X-XSS-Protection: 1; report=<reporting-uri><br>启用XSS过滤。 如果检测到跨站脚本攻击，浏览器将清除页面并使用CSP report-uri指令的功能发送违规报告。  </p>
+<pre><code>- 转义  
+XSS攻击主要是通过构造特殊字符来注入脚本。所以在客户端与服务端都进行输入检测，然后对用户输入的数据进行转义。</code></pre><p>function escapeHTML(str) {<br>    if (!str) return ‘’;<br>    str = str.replace(/&amp;/g, “&amp;”);<br>    str = str.replace(/&lt;/g, “&lt;”);<br>    str = str.replace(/&gt;/g, “&gt;”);<br>    str = str.replace(/“/g, “&quot;”);<br>    str = str.replace(/‘/g, “&#39;”);<br>    return str;<br>};</p>
+<pre><code>- 过滤  
+在富文本中因为需要保留 HTML ，所以我们不能使用转义的方法防御 XSS 攻击，这里使用过滤的方式防御 XSS 攻击，也就是通过只使用白名单允许的 HTML 标记及其属性，来防御攻击。
+
+- 内容安全策略（csp）   
+实质是白名单策略，开发者明确告诉客户端，哪些外部资源可以加载和执行，大大增强了网页的安全性。
+
+# 跨站请求伪造（CSRF）
+叫做“攻击者伪造请求”，更好理解。
+- 用户登录一些官方网站。
+- 攻击者伪造一个链接或事件，诱导用户去点击。
+- 用户触发事件后（点击或者触发其他什么事件），执行操作。用户执行了表面的操作，实际上攻击者利用用户触发这个事件，伪造用户在官方网站做一些事情。
+
+## 例子
+- 张三登录了购物网站。
+- 之后张三不小心点击了攻击者的恶意链接。
+- 在点击链接之后，张三的购物车被清空。此时，张三还并不知情。
+
+## 分析攻击者为什么能成功
+- 张三如果第一次登录购物网站，网站要求用户输入用户名和命名，验证正确才能进入。
+- 此时购物网站在张三登录成功之后，会给张三Cookie（里面有Session ID），下次张三登录的时候可以不必输入用户名密码，靠着Session ID 就可以直接进入。
+- 若张三点击了攻击者的事件之后，其实就是伪造用户去进入购物网站然后执行一些操作。（利用张三的权限去做事情）
+- 此时购物网站的服务器会认为是张三本人在做的一些操作，因为有Session ID。
+
+## CSRF特点
+- 攻击一般发起在第三方网站，而不是被攻击的网站。
+- 攻击是利用受害者在被攻击网站的登录凭证，冒充受害者提交操作，仅仅是“冒用”，而不是直接窃取数据。
+- 攻击者预测出被攻击的网站接口的所有参数，成功伪造请求。
+
+## 防御方法
+- SameSite 属性     
+Cookie 的 SameSite 属性用来限制第三方 Cookie，从而减少安全风险，可以用来防止 CSRF 攻击和用户追踪。
+
+- 同源检测  
+在 HTTP 协议中，每一个异步请求都会携带两个 Header ，用于标记来源域名：
+    - Origin Header
+    - Referer Header 
+
+这两个 Header 在浏览器发起请求时，大多数情况会自动带上，并且不能由前端自定义内容。 服务器可以通过解析这两个 Header 中的域名，确定请求的来源域。
+
+通过校验请求的该字段，我们能知道请求是否是从本站发出的。我们可以**通过拒绝非本站发出的请求**，来避免了 CSRF 攻击。
+
+# 点击劫持
+点击劫持是一种视觉上的欺骗手段。攻击者使用一个透明的、不可见的`iframe`，覆盖在一个网页上，然后诱使用户在该网页上进行操作，此时用户将在不知情的情况下点击透明的`iframe`页面。通过调整`iframe`页面的位置，可以诱使用户恰好点击在`iframe`页面的一些功能性按钮上。
+
+原理很简单：
+- 通过`z-index`属性让其位于最上层。
+- 通过`opacity`属性让其透明度为0。
+
+&gt;点击劫持攻击与CSRF攻击（详见“跨站点请求伪造”一章）有异曲同工之妙，都是在用户不知情的情况下诱使用户完成一些动作。但是在CSRF攻击的过程中，如果出现用户交互的页面，则攻击可能会无法顺利完成。与之相反的是，点击劫持没有这个顾虑，它利用的就是与用户产生交互的页面。
+
+## Flash点击劫持
+案例：
+- 攻击者制作了一个Flash游戏，并诱使用户来玩这个游戏。这个游戏就是让用户去点击“CLICK”按钮，每次点击后这个按钮的位置都会发生变化。
+- 在其上隐藏了一个看不见的iframe。
+- 攻击通过诱导用户鼠标点击的位置，能够完成一些较为复杂的流程。
+- 最终通过这一步步的操作，打开了用户的摄像头。
+
+## 其他的点击劫持
+- 图片覆盖攻击
+- 拖拽劫持
+- 触屏劫持（发生在智能手机上的攻击）
+
+# HTTP首部注入攻击
+HTTP首部注入攻击（HTTP Header Injection）是指攻击者通过在**响应首部字段**内插入换行，添加任意响应首部或主体的一种攻击。属于被动攻击模式。
+&gt;向首部主体内添加内容的攻击称为HTTP响应截断攻击（HTTP Response Splitting Attack）。
+
+如下所示，Web应用有时会把从外部接收到的数值，赋给响应首部字段`Location`和`Set-Cookie`。
+</code></pre><p>Loaction: <a href="http://www.example.com/a.cgi?q=12345" target="_blank" rel="noopener">http://www.example.com/a.cgi?q=12345</a><br>Set-Cookie: UID=12345</p>
+<pre><code>## 危害
+- 设置任何Cookie信息
+- 重定向至任意URL
+- 显示任意的主体（HTTP响应截断攻击）
+
+# SQL注入攻击
+&gt;注入攻击的本质，是把用户输入的数据当做代码执行。这里有两个关键条件，**第一个是用户能够控制输入；第二个是原本程序要执行的代码，拼接了用户输入的数据**。
+
+所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意）的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。
+
+SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。
+
+
+&gt;比如先前的很多影视网站泄露VIP会员密码大多就是通过WEB表单递交查询字符暴出的，这类表单特别容易受到SQL注入式攻击．
+
+## 如何防御SQL注入攻击
+- 使用预编译语句，绑定变量。`（最佳方式）    `     
+
+使用预编译的SQL语句，SQL语句的语义不会发生改变。在SQL语句中，变量用`？`表示，攻击者无法改变SQL的结构，在上面的例子中，即使攻击者插入类似于`tom&#39; or&#39;1&#39;=&#39;1`的字符串，也只会将此字符串当做`username`来查询。
+- 使用安全的存储过程对抗SQL注入。          
+
+使用存储过程的效果和使用预编语句译类似，其区别就是存储过程需要先将SQL语句定义在数据库中。但需要注意的是，存储过程中也可能会存在注入问题，因此应该尽量避免在存储过程内使用动态的SQL语句。如果无法避免，则应该使用`严格的输入过滤`或者是`编码函数`来处理用户的输入数据。
+
+- 检查数据类型  
+
+检查输入数据的数据类型，在很大程度上可以对抗SQL注入。比如用户在输入邮箱时，必须严格按照邮箱的格式；输入时间、日期时，必须严格按照时间、日期的格式，等等，都能避免用户数据造成破坏。但数据类型检查并非万能，如果需求就是需要用户提交字符串，比如一段短文，则需要依赖其他的方法防范SQL注入。
+
+- 使用安全函数
+- 使用最小权限原则，避免Web应用直接使用root、dbowner等高权限账户直接连接数据库。    
+如果有多个不同的应用在使用同一个数据库，则也应该为每个应用分配不同的账户。Web应用使用的数据库账户，不应该有创建自定义函数、操作本地文件的权限。
+
+# OS命令注入攻击
+OS命令注入攻击（OS Command Injection）是指通过Web应用，执行非法的操作系统命令达到攻击的目的。**只要在能调用Shell函数的地方就有存在被攻击的风险**。
+
+OS命令注入攻击可以向Shell发送命令，让Windows或Linux操作系统的命令行启动程序。也就是说，通过OS注入攻击可执行OS上安装着的各种程序。
+
+## 产生的原因
+- 使用了内部调用Shell的函数（system、open等）
+- 将倍加传入的参数传递给内部调用的shell的函数
+- 参数中shell的元字符没有被转义
+
+## 防御对策
+- 选择不调用OS命令的实现方法。不调用利用shell的功能，既能杜绝了OS命令注入漏洞混入的可能性，又消除了调用OS命令的而系统开销，能够从多方面提高应用的性能。
+- 不将外界输入的字符串传递给命令行参数。
+- 使用安全的函数对传递给OS命令参数进行转义。
+
+# 其他一些Web攻击
+## 目录遍历攻击
+目录遍历（Directory Traversal）攻击是指对本无意公开的文件目录，通过非法截断其目录路径后，达成访问目的的一种攻击。这种攻击有时也称为路径遍历（PathTraversal）攻击。
+
+通过Web应用对文件处理操作时，在由外部指定文件名的处理存在疏漏的情况下，用户可使用．../等相对路径定位到/etc/passed等绝对路径上，因此服务器上任意的文件或文件目录皆有可能被访问到。这样一来，就有可能非法浏览、篡改或删除Web服务器上的文件。
+
+固然存在输出值转义的问题，但更应该关闭指定对任意文件名的访问权限。
+
+## 远程文件包含漏洞
+远程文件包含漏洞（Remote File Inclusion）是指当部分脚本内容需要从其他文件读入时，攻击者利用指定外部服务器的URL充当依赖文件，让脚本读取之后，就可运行任意脚本的一种攻击。
+
+这主要是PHP存在的安全漏洞，对PHP的`include或require`来说，这是一种可通过设定，指定外部服务器的URL作为文件名的功能。但是，该功能太危险，PHP5.2.0之后默认设定此功能无效。
+
+固然存在输出值转义的问题，但更应控制对任意文件名的指定。
+</code></pre><p>源代码：<br><a href="http://example.com/foo.php?mod=news.php" target="_blank" rel="noopener">http://example.com/foo.php?mod=news.php</a></p>
+<p>经过攻击后：<br><a href="http://example.com/foo.php?mod=http://hackr.jp/cmd.php&amp;cmd=1s" target="_blank" rel="noopener">http://example.com/foo.php?mod=http://hackr.jp/cmd.php&amp;cmd=1s</a></p>
+<pre><code>攻击者通过把要引入的文件替换成自己的文件，就能攻击到服务器了。
+
+## 不正确的错误消息处理
+不正确的错误消息处理（Error Handling Vulnerability）的安全漏洞是指，Web应用的**错误信息内包含对攻击者有用的信息**。与Web应用有关的主要错误信息如下所示。
+- Web应用抛出的错误消息
+- 数据库等系统抛出的错误消息
+
+Web应用不必在用户的浏览画面上展现详细的错误消息。对攻击者来说，详细的错误消息有可能给他们下一次攻击以提示。
+
+## 开放重定向
+开放重定向（Open Redirect）是一种对指定的任意URL作重定向跳转的功能。而与此功能相关联的安全漏洞是指，假如指定的重定向URL到某个具有恶意的Web网站，那么用户就会被诱导至那个Web网站。</code></pre><p>原URL：<br><a href="http://example.com/?redirect=http://www.tricorder.jp" target="_blank" rel="noopener">http://example.com/?redirect=http://www.tricorder.jp</a></p>
+<p>被攻击后：<br><a href="http://example.com/?redirect=http://hackr.jp" target="_blank" rel="noopener">http://example.com/?redirect=http://hackr.jp</a></p>
+<p>```<br>用户看到URL后原以为访问example.com，不料实际上被诱导至hackr.jp这个指定的重定向目标。</p>
+<p>可信度高的Web网站如果开放重定向功能，则很有可能被攻击者选中并用来作为钓鱼攻击的跳板。</p>
+<h2 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h2><p>密码破解攻击（Password Cracking）即算出密码，突破认证。攻击不仅限于Web应用，还包括其他的系统（如FTP或SSH等）。有以下几种破解方法：</p>
+<ul>
+<li>穷举法<br>对所有密钥集合构成的密钥空间（Keyspace）进行穷举。即，用所有可行的候选密码对目标的密码系统试错，用以突破验证的一种攻击。</li>
+<li>字典攻击<br>利用事先收集好的候选密码（经过各种组合方式后存入字典），枚举字典中的密码，尝试通过认证的一种攻击手法。<blockquote>
+<p>字典攻击中有一种利用其他Web网站已泄露的ID及密码列表进行的攻击。很多用户习惯随意地在多个Web网站使用同一套ID及密码，因此攻击会有相当高的成功几率</p>
+</blockquote>
 </li>
-<li>边缘部分的通信方式<ul>
-<li>客户-服务器方式（C/S）。客户是服务请求方，服务器是服务提供方。</li>
-<li>对等连接方式（P2P）。两台主机通信并不区分哪一个是服务请求方哪一个是提供方。只要两台主机都运行了对等连接软件就可以通信，相互下载对方硬盘里面的文档。</li>
 </ul>
-</li>
-<li>核心部分<ul>
-<li>路由器。它是一种专用计算机。路由器是实现<strong>分组交换</strong>的关键构件，其任务是转发收到的分组。<h2 id="何为分组交换"><a href="#何为分组交换" class="headerlink" title="何为分组交换"></a>何为分组交换</h2></li>
-</ul>
-</li>
-<li>电路交换： 建立连接（占用通信资源） -&gt; 通话（一直占用通信资源） -&gt; 释放连接（归还通信资源）。在通话的全部时间里，通话的两个用户始终占用端到端的通信资源。</li>
-<li>分组交换：采用<strong>存储转发</strong>技术。要发送整块数据，这块数据被称为一个<strong>报文</strong>。在发送之前，把报文分成一个个更小的等长数据段，并在头部加上包头。</li>
-<li><strong>（首部 + 数据 = 分组）X （很多个） = 报文</strong></li>
-<li>路由器的作用就是<strong>用来转发这些分组</strong>的。路由器收到一个分组，先暂存一下，检查头部，查找转发表，交给下一个路由器，一步一步以存储转发的方式给目的主机。分组交换在传输数据之前不必占用一条端到端的通信资源，并且省去了建立连接和释放连接的开销，<strong>传输数据效率更高</strong>。</li>
+<h2 id="DoS攻击"><a href="#DoS攻击" class="headerlink" title="DoS攻击"></a>DoS攻击</h2><p>DoS攻击（Denial of Service attack）是一种让运行中的服务呈停止状态的攻击。有时也叫做服务停止攻击或拒绝服务攻击。DoS攻击的对象不仅限于Web网站，还包括网络设备及服务器等。</p>
+<p>有两种DOS攻击方式：</p>
+<ul>
+<li>集中利用访问请求造成资源过载，资源用尽的同时，实际上服务也就呈停止状态。（海量请求导致服务器瘫痪,服务器很难分辨何为正常请求，何为攻击请求，因此很难防止DoS攻击。）</li>
+<li>通过攻击安全漏洞使服务停止。</li>
 </ul>
 <blockquote>
-<p>为了理解<strong>分组</strong>，我还是更愿意称之为<strong>小报文</strong>，更方便记忆。因为称之为分组我感觉太拗口了。</p>
+<p>多台计算机发起的DoS攻击称为DDoS攻击（DistributedDenial of Service attack）。DDoS攻击通常利用那些感染病毒的计算机作为攻击者的攻击跳板。</p>
 </blockquote>
+<h2 id="后门程序"><a href="#后门程序" class="headerlink" title="后门程序"></a>后门程序</h2><p>后门程序（Backdoor）是指开发设置的隐藏入口，可不按正常步骤使用受限功能。利用后门程序就能够使用原本受限制的功能。</p>
+<p>通常的后门程序分为以下3种类型。</p>
 <ul>
-<li>总结  <ul>
-<li>电路交换。整个报文连续从源点到终点，好像在一个管道中传送。适合大量数据传输。</li>
-<li>报文交换。整个报文先到达相邻结点，全部储存下来查找转发表，转发到下一个结点。</li>
-<li>分组交换。单个分组（整个报文的一小部分）传送给相邻结点，存储下来后查找转发表，转发到下一个结点。（原理采用报文交换）灵活。</li>
+<li>开发阶段作为Debug调用的后门程序</li>
+<li>开发者为了自身利益植入的后门程序</li>
+<li>攻击者通过某种方法设置的后门程序</li>
 </ul>
-</li>
+<p>可通过监视进程和通信的状态发现被植入的后门程序。但设定在Web应用中的后门程序，由于和正常使用时区别不大，通常很难发现。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li>《图解HTTP》</li>
+<li>吴瀚清《白帽子讲Web安全》</li>
+<li><a href="https://segmentfault.com/a/1190000020402185" target="_blank" rel="noopener">跨站脚本攻击—XSS</a></li>
+<li><a href="https://segmentfault.com/a/1190000021114673" target="_blank" rel="noopener">跨站请求伪造—CSRF</a></li>
 </ul>
-<h1 id="七层协议和四层协议的由来"><a href="#七层协议和四层协议的由来" class="headerlink" title="七层协议和四层协议的由来"></a>七层协议和四层协议的由来</h1><p><img src="https://user-gold-cdn.xitu.io/2019/11/10/16e53ec3b6abd5b4?w=686&h=409&f=png&s=168302" alt=""><br>先看一个很简单的例子：连接在网络上的两台计算机要互相传送文件。<br>  要实现这种功能需要做什么呢？</p>
-<ul>
-<li>两者之间要有传输数据的通路。</li>
-<li>要保证通道的正确发送和接收。</li>
-<li>要告诉网络如何识别接收数据的计算机。</li>
-<li>必须检查对方是否开机，并且联网了。</li>
-<li>发起通信的计算机的软件必须搞清楚在对方的软件是否做好接收文件和存储文件的准备。</li>
-<li>若计算机文件格式不兼容，则至少其中一台计算机应完成格式转换功能。</li>
-<li>对于出现的各种差错意外，如数据传输错误，重复，丢失，是否有可靠的措施保障对方能接受到正确的文件。</li>
-</ul>
-<p>以上在种种，表明相互通信的两个计算机系统必须高度协调工作才行，为了协调，提出了<strong>分层</strong>的方法。用<strong>分层</strong>把问题分而治之。</p>
-<h2 id="协议与划分层次"><a href="#协议与划分层次" class="headerlink" title="协议与划分层次"></a>协议与划分层次</h2><p>  在计算机网络要做到有条不紊的交换数据，就必须遵守实现约好的规则。这些为进行网络中的数据交换而建立的规则，标准，约定称之为<strong>网络协议</strong>，也可简称为<strong>协议</strong>。协议有三要素。</p>
-<ul>
-<li>语法。数据与控制信息的结构或格式。</li>
-<li>语义。即需要发出何种控制信息，完成何种动作以及做出何种响应。</li>
-<li>同步。事件实现顺序的详细说明。 </li>
-</ul>
-<p>  <strong>我们想连接在网络上的另外一台计算机做点什么事，都需要有协议。</strong></p>
-<h2 id="立贤不立长"><a href="#立贤不立长" class="headerlink" title="立贤不立长"></a>立贤不立长</h2><ul>
-<li>1974年，美国IBM公司宣布了<code>系统网络体系结构SNA</code>。这个网络标准是按照分层的方法制定的。不久其他一些公司也相继推出自己公司的体系结构。</li>
-<li>不同的网络体系结构出现后，使得同一个公司生产的各种设备都能很容易地互连成网。但由于<strong>网络体系结构的不同，不同公司的设备很难互相连通</strong>。</li>
-<li>为了使得不同网络体系结构的用户迫切要求能够互相交换信息，国际化标准组织ISO在1977成立专门机构研究该问题。他们提出一个试图使各种计算机在世界范围内互连成网的标准框架，即OSI/RM,<strong>简称OSI</strong>。只要遵循OSI标准，一个系统就可以和世界上任何地方的，也遵守这一标准的其他任何系统进行通信。</li>
-<li>1983年，OSI提出了<strong>七层协议。</strong></li>
-<li>但是，到了90年代初期，尽管整套的OSI国际标准已经制定出来，但基于<strong>TCP/IP的四层协议</strong>的互联网已抢先在全球相当大的范围成功运行。OSI失败了。</li>
-<li>得到最广泛应用的不是法律上的标准OSI，而是非国际标准TCP/IP。<strong>TCP/IP被当做事实的国际标准</strong>。<blockquote>
-<ul>
-<li>现在人们提到的TCP/IP并不一定单指TCP和IP两个具体的协议，而是往往表示互联网所使用的<strong>整个TCP/IP协议族</strong>。</li>
-<li>网络协议的一个重要的特定是必须把所有不利的条件事先估计到，不能假设一切都是正常的和非常理想的。</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h2 id="四层协议"><a href="#四层协议" class="headerlink" title="四层协议"></a>四层协议</h2><ul>
-<li>应用层。<br>  是体系结构的最高层。任务是通过应用进程间的交互来完成特定网络应用。应用层定义的是应用进程间通信和交互的规则。在互联网的应用层协议很多，如<br>  <code>域名系统NDS，支持万维网应用的HTTP协议，支持电子邮件的SMTP协议。</code>我们把应用层交互的数据单元称为报文。<ul>
-<li>运输层。<br>负责两台主机中进程之间的通信提供通用的数据传输服务。主要使用两种协议。<ul>
-<li><code>传输控制协议TCP</code>。数据传输的单位是报文段。</li>
-<li><code>用户数据报协议UDP</code>。提供无连接的，尽最大努力的数据传输服务（不保证数据传输的可靠性），数据传输的单位是用户数据报。</li>
-</ul>
-</li>
-<li>网络层。<br>负责为分组交换网上的不同主机提供通信服务。在发送数据时，网络层把运输层产生的报文段或用户数据封装成分组（小报文）或包进行传送。<br>网络层的另外一个任务就是要选择合适的路由，使源主机运输层所传下来的分组（小报文）能够通过路由器找到目的的主机。<code>IP协议</code>。</li>
-<li>数据链路层（链路层）。<br>两台主机之间的数据传输，总是在一段一段的链路上传送的，这就需要专门的链路层协议。<br><code>在两个相邻结点之间传送数据时，数据链路层把网络层交下来的IP数据报组装成帧，在两个相邻结点的链路上传送帧，每一帧包括数据和必要的控制信息（如同步信息，地址信息，差错控制）</code><br>在接收数据时，接收到一个帧，抽出数据部分，提交给网络层。</li>
-</ul>
-</li>
-</ul>
-<h1 id="捋一捋两个主机之间通信的全过程"><a href="#捋一捋两个主机之间通信的全过程" class="headerlink" title="捋一捋两个主机之间通信的全过程"></a>捋一捋两个主机之间通信的全过程</h1><p>主机A向主机B传输数据。</p>
-<ol>
-<li>主机A把数据给应用层，应用层加上必要的控制信息。</li>
-<li>应用层的数据再给运输层，运输层再加上控制信息。</li>
-<li>运输层的数据给网络层，网络层再加上控制信息。</li>
-<li>网络层的数据给链路层，链路层给数据加上首部和尾部。</li>
-<li>链路层再把数据给物理层，物理层传输单位是比特，不加控制信息。</li>
-<li>接着数据到达路由器，路由器分析控制信息。</li>
-<li>路由器的分组（小报文）传给物理层。</li>
-<li>物理层再传给链路层，链路层分析控制信息并剥去，找到上层的网络层。</li>
-<li>网络层接收到数据，分析控制信息并剥去，找到上层的运输层。</li>
-<li>运输层接收到信息，分析并剥去控制信息，找到应用层。</li>
-<li>应用层剥去控制信息，把数据给主机B。</li>
-</ol>
-<p><strong>用一个简单的例子描述：</strong><br>  一封信从最高层向下传，每经过一层就包上一个新的信封，写上必要的地址信息。到达最底层时，向上传，每经过一层就剥去一层信封，到达最高层的时候，去取出发信人的信交给收信人就可以了。</p>
-<h3 id="下一篇文章讲应用层的各种协议，HTTP除外，HTTP是重点应该单拎起来讲。-如果对你有帮助，麻烦点赞加关注哦！"><a href="#下一篇文章讲应用层的各种协议，HTTP除外，HTTP是重点应该单拎起来讲。-如果对你有帮助，麻烦点赞加关注哦！" class="headerlink" title="下一篇文章讲应用层的各种协议，HTTP除外，HTTP是重点应该单拎起来讲。      如果对你有帮助，麻烦点赞加关注哦！"></a>下一篇文章讲应用层的各种协议，HTTP除外，HTTP是重点应该单拎起来讲。      如果对你有帮助，麻烦点赞加关注哦！</h3>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>我的计算机网络学习之旅暂时就结束了。因为大四还在实习，白天还需要完成公司的任务，只能在晚上或者周末去公司自主学习，前前后后大约有花一两个月的时间。收获很多，这种感觉与当初上计算机网络课的感觉完全不一样，当时上了也就上了，知识都是零零散散的，都没有去串联起来，导致记得不深刻。如今花了心思去整理总结后，有种融会贯通的感觉，在<strong>Chrome调试，项目中前后端对接，性能优化</strong>方面的认知更为巩固和深刻。</p>
+
             </div>
             <hr/>
 
@@ -757,29 +850,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/08/ying-yong-ceng-chong-xue-ji-suan-ji-wang-luo-xi-lie-2/">
+                <a href="/2020/01/08/chang-jian-de-web-gong-ji-ji-fang-yu-ban-fa-chong-xue-ji-suan-ji-wang-luo-xi-lie-5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="应用层 - 重学计算机网络系列(2)">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="常见的Web攻击及防御办法 - 重学计算机网络系列(5)">
                         
-                        <span class="card-title">应用层 - 重学计算机网络系列(2)</span>
+                        <span class="card-title">常见的Web攻击及防御办法 - 重学计算机网络系列(5)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            每个应用层协议都是为了解决某一类应用问题，而问题的解决又必须通过位于不同主机中的多个应用进程之间的通信和协同工作来完成。应用层的具体内容就是精确定义这些通信规则。
+                            简单的HTTP协议本身并不存在安全性问题，因此协议本身几乎不会成为攻击的对象。应用HTTP协议的服务器和客户端，以及运行在服务器上的Web应用等资源才是攻击目标。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,6 +886,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -810,24 +905,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/10/xiang-ying-shi-bu-ju-fang-fa-zong-jie/">
+                <a href="/2020/01/08/https-http-zhui-jia-xie-yi-chong-xue-ji-suan-ji-wang-luo-xi-lie-4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="响应式布局方法总结">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="HTTPS，HTTP追加协议 - 重学计算机网络系列(4)">
                         
-                        <span class="card-title">响应式布局方法总结</span>
+                        <span class="card-title">HTTPS，HTTP追加协议 - 重学计算机网络系列(4)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            响应式布局指的是同一页面在不同屏幕尺寸下有不同的布局。传统的开发方式是PC端开发一套，手机端再开发一套，而使用响应式布局只要开发一套就够。
+                            本篇文章主要讲HTTPS，HTTP和HTTPS区别，认证，SPDY的AJAX与Comet，Websocket
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-08
                             </span>
                         <span class="publish-author">
                             
@@ -844,8 +939,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS3/">
-                        <span class="chip bg-color">CSS3</span>
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
                     </a>
                     
                 </div>
